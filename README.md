@@ -32,14 +32,14 @@ Support a multitude of languages.
 <!-- Demo -->
 <img src="./readme/title5.svg"/>
 
-### User Screens (Mobile)
+### User Screens 
 
-| Login screen                            | Register screen                       | Register screen                       |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Login screen                            | Register screen                       
+| --------------------------------------- | ------------------------------------- 
+| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) 
 
 
-### Admin Screens (Web)
+### Admin Screens
 
 | Login screen                            | Register screen                       |
 | --------------------------------------- | ------------------------------------- |
