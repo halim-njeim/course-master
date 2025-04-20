@@ -5,9 +5,7 @@
 <!-- project overview -->
 <img src="./readme/title2.svg"/>
 
-> Description here.
->
-> Description here.
+A web application that takes in Youtube Video links and turns them into interactive courses using the power of Ai!
 
 <br><br>
 
@@ -25,7 +23,9 @@
 
 ### Add Title Here
 
-- List the sexy features.
+Design courses through youtube links.
+Create quizzes and assignments.
+Support a multitude of languages.
 
 <br><br>
 
