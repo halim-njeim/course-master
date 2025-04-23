@@ -5,9 +5,7 @@
 <!-- project overview -->
 <img src="./readme/title2.svg"/>
 
-> Description here.
->
-> Description here.
+A web-based application that turns any youtube video link into an interactive course.
 
 <br><br>
 
@@ -32,19 +30,17 @@
 <!-- Demo -->
 <img src="./readme/title5.svg"/>
 
-### User Screens (Mobile)
+### User Screens
 
-| Login screen                            | Register screen                       | Register screen                       |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-
+| Login screen                            | Register screen                       |
+| --------------------------------------- | ------------------------------------- |
+| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
 
 ### Admin Screens (Web)
 
 | Login screen                            | Register screen                       |
 | --------------------------------------- | ------------------------------------- |
 | ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-
 
 <br><br>
 
@@ -53,11 +49,9 @@
 
 ### Add Title Here
 
-
-| Services                            | Validation                       | Testing                        |
+| Services                                | Validation                            | Testing                               |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
 | ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-
 
 <br><br>
 
@@ -68,8 +62,7 @@
 
 - Description here.
 
-
-| Postman API 1                            | Postman API 2                       | Postman API 3                        |
+| Postman API 1                           | Postman API 2                         | Postman API 3                         |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
 | ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
 
