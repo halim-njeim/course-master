@@ -127,6 +127,121 @@ exports.Prisma.UserScalarFieldEnum = {
   deleted: 'deleted'
 };
 
+exports.Prisma.CourseScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  title: 'title',
+  youtube_url: 'youtube_url',
+  created_at: 'created_at',
+  completed_at: 'completed_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.ChapterScalarFieldEnum = {
+  id: 'id',
+  course_id: 'course_id',
+  title: 'title',
+  description: 'description',
+  chapter_number: 'chapter_number',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.QuizScalarFieldEnum = {
+  id: 'id',
+  chapter_id: 'chapter_id',
+  passing_score: 'passing_score',
+  time_limit_secs: 'time_limit_secs',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.QuestionScalarFieldEnum = {
+  id: 'id',
+  quiz_id: 'quiz_id',
+  question_text: 'question_text',
+  question_type: 'question_type',
+  points: 'points',
+  question_number: 'question_number',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.OptionScalarFieldEnum = {
+  id: 'id',
+  question_id: 'question_id',
+  option_text: 'option_text',
+  options_number: 'options_number',
+  is_correct: 'is_correct',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.WrittenAnswerScalarFieldEnum = {
+  id: 'id',
+  question_id: 'question_id',
+  answer: 'answer',
+  match_percentage: 'match_percentage',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.UserCourseProgressScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  course_id: 'course_id',
+  completion_percentage: 'completion_percentage',
+  is_complete: 'is_complete',
+  current_chapter_id: 'current_chapter_id',
+  completed_at: 'completed_at',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.UserChapterProgressScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  chapter_id: 'chapter_id',
+  completion_percentage: 'completion_percentage',
+  is_complete: 'is_complete',
+  completed_at: 'completed_at',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.UserQuizAttemptScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  quiz_id: 'quiz_id',
+  score: 'score',
+  passed: 'passed',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.UserResponseScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  attempt_id: 'attempt_id',
+  question_id: 'question_id',
+  selected_option_id: 'selected_option_id',
+  written_response: 'written_response',
+  is_correct: 'is_correct',
+  points_awarded: 'points_awarded',
+  graded_at: 'graded_at',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.CoursePdfScalarFieldEnum = {
+  id: 'id',
+  course_id: 'course_id',
+  user_id: 'user_id',
+  pdf_url: 'pdf_url',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -138,9 +253,60 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   password: 'password'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.CourseOrderByRelevanceFieldEnum = {
+  title: 'title',
+  youtube_url: 'youtube_url'
+};
+
+exports.Prisma.ChapterOrderByRelevanceFieldEnum = {
+  title: 'title',
+  description: 'description'
+};
+
+exports.Prisma.QuestionOrderByRelevanceFieldEnum = {
+  question_text: 'question_text'
+};
+
+exports.Prisma.OptionOrderByRelevanceFieldEnum = {
+  option_text: 'option_text'
+};
+
+exports.Prisma.WrittenAnswerOrderByRelevanceFieldEnum = {
+  answer: 'answer'
+};
+
+exports.Prisma.UserResponseOrderByRelevanceFieldEnum = {
+  written_response: 'written_response'
+};
+
+exports.Prisma.CoursePdfOrderByRelevanceFieldEnum = {
+  pdf_url: 'pdf_url'
+};
+exports.QuestionType = exports.$Enums.QuestionType = {
+  MULTIPLE_CHOICE: 'MULTIPLE_CHOICE',
+  SINGLE_CHOICE: 'SINGLE_CHOICE',
+  TRUE_FALSE: 'TRUE_FALSE',
+  WRITTEN: 'WRITTEN'
+};
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Course: 'Course',
+  Chapter: 'Chapter',
+  Quiz: 'Quiz',
+  Question: 'Question',
+  Option: 'Option',
+  WrittenAnswer: 'WrittenAnswer',
+  UserCourseProgress: 'UserCourseProgress',
+  UserChapterProgress: 'UserChapterProgress',
+  UserQuizAttempt: 'UserQuizAttempt',
+  UserResponse: 'UserResponse',
+  CoursePdf: 'CoursePdf'
 };
 
 /**
