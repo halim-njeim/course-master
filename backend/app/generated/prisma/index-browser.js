@@ -233,11 +233,19 @@ exports.Prisma.UserResponseScalarFieldEnum = {
   updated_at: 'updated_at'
 };
 
-exports.Prisma.CoursePdfScalarFieldEnum = {
+exports.Prisma.CourseResourceScalarFieldEnum = {
   id: 'id',
+  resource_type_id: 'resource_type_id',
   course_id: 'course_id',
   user_id: 'user_id',
-  pdf_url: 'pdf_url',
+  resource_url: 'resource_url',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.ResourceTypeScalarFieldEnum = {
+  id: 'id',
+  extension: 'extension',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };
@@ -284,8 +292,12 @@ exports.Prisma.UserResponseOrderByRelevanceFieldEnum = {
   written_response: 'written_response'
 };
 
-exports.Prisma.CoursePdfOrderByRelevanceFieldEnum = {
-  pdf_url: 'pdf_url'
+exports.Prisma.CourseResourceOrderByRelevanceFieldEnum = {
+  resource_url: 'resource_url'
+};
+
+exports.Prisma.ResourceTypeOrderByRelevanceFieldEnum = {
+  extension: 'extension'
 };
 exports.QuestionType = exports.$Enums.QuestionType = {
   MULTIPLE_CHOICE: 'MULTIPLE_CHOICE',
@@ -306,7 +318,8 @@ exports.Prisma.ModelName = {
   UserChapterProgress: 'UserChapterProgress',
   UserQuizAttempt: 'UserQuizAttempt',
   UserResponse: 'UserResponse',
-  CoursePdf: 'CoursePdf'
+  CourseResource: 'CourseResource',
+  ResourceType: 'ResourceType'
 };
 
 /**

@@ -26,7 +26,7 @@ model User {
   //Relations
 
   courses               Course[]
-  course_pdfs           CoursePdf[]
+  course_resources      CourseResource[]
   user_course_progress  UserCourseProgress[]
   user_chapter_progress UserChapterProgress[]
   user_quiz_attempts    UserQuizAttempt[]
@@ -47,7 +47,7 @@ model Course {
   // Relations
   user                 User                 @relation(fields: [user_id], references: [id])
   chapters             Chapter[]
-  course_pdfs          CoursePdf[]
+  course_resources     CourseResource[]
   user_course_progress UserCourseProgress[]
 
   @@map("courses")
@@ -216,17 +216,31 @@ model UserResponse {
   @@map("user_responses")
 }
 
-model CoursePdf {
+model CourseResource {
+  id               BigInt   @id @default(autoincrement())
+  resource_type_id BigInt
+  course_id        BigInt
+  user_id          BigInt
+  resource_url     String   @db.VarChar(255)
+  created_at       DateTime @default(now()) @db.DateTime
+  updated_at       DateTime @updatedAt @db.DateTime
+
+  // Relations
+  course        Course       @relation(fields: [course_id], references: [id])
+  user          User         @relation(fields: [user_id], references: [id])
+  resource_type ResourceType @relation(fields: [resource_type_id], references: [id])
+
+  @@map("course_resources")
+}
+
+model ResourceType {
   id         BigInt   @id @default(autoincrement())
-  course_id  BigInt
-  user_id    BigInt
-  pdf_url    String   @db.VarChar(255)
+  extension  String   @db.VarChar(60)
   created_at DateTime @default(now()) @db.DateTime
   updated_at DateTime @updatedAt @db.DateTime
 
   // Relations
-  course Course @relation(fields: [course_id], references: [id])
-  user   User   @relation(fields: [user_id], references: [id])
+  course_resources CourseResource[]
 
-  @@map("course_pdfs")
+  @@map("resource_types")
 }

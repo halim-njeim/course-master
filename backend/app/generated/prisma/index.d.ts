@@ -69,10 +69,15 @@ export type UserQuizAttempt = $Result.DefaultSelection<Prisma.$UserQuizAttemptPa
  */
 export type UserResponse = $Result.DefaultSelection<Prisma.$UserResponsePayload>
 /**
- * Model CoursePdf
+ * Model CourseResource
  * 
  */
-export type CoursePdf = $Result.DefaultSelection<Prisma.$CoursePdfPayload>
+export type CourseResource = $Result.DefaultSelection<Prisma.$CourseResourcePayload>
+/**
+ * Model ResourceType
+ * 
+ */
+export type ResourceType = $Result.DefaultSelection<Prisma.$ResourceTypePayload>
 
 /**
  * Enums
@@ -329,14 +334,24 @@ export class PrismaClient<
   get userResponse(): Prisma.UserResponseDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.coursePdf`: Exposes CRUD operations for the **CoursePdf** model.
+   * `prisma.courseResource`: Exposes CRUD operations for the **CourseResource** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more CoursePdfs
-    * const coursePdfs = await prisma.coursePdf.findMany()
+    * // Fetch zero or more CourseResources
+    * const courseResources = await prisma.courseResource.findMany()
     * ```
     */
-  get coursePdf(): Prisma.CoursePdfDelegate<ExtArgs, ClientOptions>;
+  get courseResource(): Prisma.CourseResourceDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.resourceType`: Exposes CRUD operations for the **ResourceType** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ResourceTypes
+    * const resourceTypes = await prisma.resourceType.findMany()
+    * ```
+    */
+  get resourceType(): Prisma.ResourceTypeDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -788,7 +803,8 @@ export namespace Prisma {
     UserChapterProgress: 'UserChapterProgress',
     UserQuizAttempt: 'UserQuizAttempt',
     UserResponse: 'UserResponse',
-    CoursePdf: 'CoursePdf'
+    CourseResource: 'CourseResource',
+    ResourceType: 'ResourceType'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -807,7 +823,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "course" | "chapter" | "quiz" | "question" | "option" | "writtenAnswer" | "userCourseProgress" | "userChapterProgress" | "userQuizAttempt" | "userResponse" | "coursePdf"
+      modelProps: "user" | "course" | "chapter" | "quiz" | "question" | "option" | "writtenAnswer" | "userCourseProgress" | "userChapterProgress" | "userQuizAttempt" | "userResponse" | "courseResource" | "resourceType"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1537,69 +1553,135 @@ export namespace Prisma {
           }
         }
       }
-      CoursePdf: {
-        payload: Prisma.$CoursePdfPayload<ExtArgs>
-        fields: Prisma.CoursePdfFieldRefs
+      CourseResource: {
+        payload: Prisma.$CourseResourcePayload<ExtArgs>
+        fields: Prisma.CourseResourceFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.CoursePdfFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoursePdfPayload> | null
+            args: Prisma.CourseResourceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourseResourcePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.CoursePdfFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoursePdfPayload>
+            args: Prisma.CourseResourceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourseResourcePayload>
           }
           findFirst: {
-            args: Prisma.CoursePdfFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoursePdfPayload> | null
+            args: Prisma.CourseResourceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourseResourcePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.CoursePdfFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoursePdfPayload>
+            args: Prisma.CourseResourceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourseResourcePayload>
           }
           findMany: {
-            args: Prisma.CoursePdfFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoursePdfPayload>[]
+            args: Prisma.CourseResourceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourseResourcePayload>[]
           }
           create: {
-            args: Prisma.CoursePdfCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoursePdfPayload>
+            args: Prisma.CourseResourceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourseResourcePayload>
           }
           createMany: {
-            args: Prisma.CoursePdfCreateManyArgs<ExtArgs>
+            args: Prisma.CourseResourceCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.CoursePdfDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoursePdfPayload>
+            args: Prisma.CourseResourceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourseResourcePayload>
           }
           update: {
-            args: Prisma.CoursePdfUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoursePdfPayload>
+            args: Prisma.CourseResourceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourseResourcePayload>
           }
           deleteMany: {
-            args: Prisma.CoursePdfDeleteManyArgs<ExtArgs>
+            args: Prisma.CourseResourceDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.CoursePdfUpdateManyArgs<ExtArgs>
+            args: Prisma.CourseResourceUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.CoursePdfUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoursePdfPayload>
+            args: Prisma.CourseResourceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourseResourcePayload>
           }
           aggregate: {
-            args: Prisma.CoursePdfAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCoursePdf>
+            args: Prisma.CourseResourceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCourseResource>
           }
           groupBy: {
-            args: Prisma.CoursePdfGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CoursePdfGroupByOutputType>[]
+            args: Prisma.CourseResourceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CourseResourceGroupByOutputType>[]
           }
           count: {
-            args: Prisma.CoursePdfCountArgs<ExtArgs>
-            result: $Utils.Optional<CoursePdfCountAggregateOutputType> | number
+            args: Prisma.CourseResourceCountArgs<ExtArgs>
+            result: $Utils.Optional<CourseResourceCountAggregateOutputType> | number
+          }
+        }
+      }
+      ResourceType: {
+        payload: Prisma.$ResourceTypePayload<ExtArgs>
+        fields: Prisma.ResourceTypeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ResourceTypeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourceTypePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ResourceTypeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourceTypePayload>
+          }
+          findFirst: {
+            args: Prisma.ResourceTypeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourceTypePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ResourceTypeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourceTypePayload>
+          }
+          findMany: {
+            args: Prisma.ResourceTypeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourceTypePayload>[]
+          }
+          create: {
+            args: Prisma.ResourceTypeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourceTypePayload>
+          }
+          createMany: {
+            args: Prisma.ResourceTypeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ResourceTypeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourceTypePayload>
+          }
+          update: {
+            args: Prisma.ResourceTypeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourceTypePayload>
+          }
+          deleteMany: {
+            args: Prisma.ResourceTypeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ResourceTypeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ResourceTypeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResourceTypePayload>
+          }
+          aggregate: {
+            args: Prisma.ResourceTypeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateResourceType>
+          }
+          groupBy: {
+            args: Prisma.ResourceTypeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ResourceTypeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ResourceTypeCountArgs<ExtArgs>
+            result: $Utils.Optional<ResourceTypeCountAggregateOutputType> | number
           }
         }
       }
@@ -1698,7 +1780,8 @@ export namespace Prisma {
     userChapterProgress?: UserChapterProgressOmit
     userQuizAttempt?: UserQuizAttemptOmit
     userResponse?: UserResponseOmit
-    coursePdf?: CoursePdfOmit
+    courseResource?: CourseResourceOmit
+    resourceType?: ResourceTypeOmit
   }
 
   /* Types for Logging */
@@ -1794,7 +1877,7 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     courses: number
-    course_pdfs: number
+    course_resources: number
     user_course_progress: number
     user_chapter_progress: number
     user_quiz_attempts: number
@@ -1803,7 +1886,7 @@ export namespace Prisma {
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     courses?: boolean | UserCountOutputTypeCountCoursesArgs
-    course_pdfs?: boolean | UserCountOutputTypeCountCourse_pdfsArgs
+    course_resources?: boolean | UserCountOutputTypeCountCourse_resourcesArgs
     user_course_progress?: boolean | UserCountOutputTypeCountUser_course_progressArgs
     user_chapter_progress?: boolean | UserCountOutputTypeCountUser_chapter_progressArgs
     user_quiz_attempts?: boolean | UserCountOutputTypeCountUser_quiz_attemptsArgs
@@ -1831,8 +1914,8 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountCourse_pdfsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CoursePdfWhereInput
+  export type UserCountOutputTypeCountCourse_resourcesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CourseResourceWhereInput
   }
 
   /**
@@ -1870,13 +1953,13 @@ export namespace Prisma {
 
   export type CourseCountOutputType = {
     chapters: number
-    course_pdfs: number
+    course_resources: number
     user_course_progress: number
   }
 
   export type CourseCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     chapters?: boolean | CourseCountOutputTypeCountChaptersArgs
-    course_pdfs?: boolean | CourseCountOutputTypeCountCourse_pdfsArgs
+    course_resources?: boolean | CourseCountOutputTypeCountCourse_resourcesArgs
     user_course_progress?: boolean | CourseCountOutputTypeCountUser_course_progressArgs
   }
 
@@ -1901,8 +1984,8 @@ export namespace Prisma {
   /**
    * CourseCountOutputType without action
    */
-  export type CourseCountOutputTypeCountCourse_pdfsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CoursePdfWhereInput
+  export type CourseCountOutputTypeCountCourse_resourcesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CourseResourceWhereInput
   }
 
   /**
@@ -2101,6 +2184,37 @@ export namespace Prisma {
    */
   export type UserQuizAttemptCountOutputTypeCountUser_responsesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserResponseWhereInput
+  }
+
+
+  /**
+   * Count Type ResourceTypeCountOutputType
+   */
+
+  export type ResourceTypeCountOutputType = {
+    course_resources: number
+  }
+
+  export type ResourceTypeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    course_resources?: boolean | ResourceTypeCountOutputTypeCountCourse_resourcesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ResourceTypeCountOutputType without action
+   */
+  export type ResourceTypeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ResourceTypeCountOutputType
+     */
+    select?: ResourceTypeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ResourceTypeCountOutputType without action
+   */
+  export type ResourceTypeCountOutputTypeCountCourse_resourcesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CourseResourceWhereInput
   }
 
 
@@ -2323,7 +2437,7 @@ export namespace Prisma {
     updated_at?: boolean
     deleted?: boolean
     courses?: boolean | User$coursesArgs<ExtArgs>
-    course_pdfs?: boolean | User$course_pdfsArgs<ExtArgs>
+    course_resources?: boolean | User$course_resourcesArgs<ExtArgs>
     user_course_progress?: boolean | User$user_course_progressArgs<ExtArgs>
     user_chapter_progress?: boolean | User$user_chapter_progressArgs<ExtArgs>
     user_quiz_attempts?: boolean | User$user_quiz_attemptsArgs<ExtArgs>
@@ -2346,7 +2460,7 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullname" | "email" | "password" | "created_at" | "updated_at" | "deleted", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     courses?: boolean | User$coursesArgs<ExtArgs>
-    course_pdfs?: boolean | User$course_pdfsArgs<ExtArgs>
+    course_resources?: boolean | User$course_resourcesArgs<ExtArgs>
     user_course_progress?: boolean | User$user_course_progressArgs<ExtArgs>
     user_chapter_progress?: boolean | User$user_chapter_progressArgs<ExtArgs>
     user_quiz_attempts?: boolean | User$user_quiz_attemptsArgs<ExtArgs>
@@ -2358,7 +2472,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       courses: Prisma.$CoursePayload<ExtArgs>[]
-      course_pdfs: Prisma.$CoursePdfPayload<ExtArgs>[]
+      course_resources: Prisma.$CourseResourcePayload<ExtArgs>[]
       user_course_progress: Prisma.$UserCourseProgressPayload<ExtArgs>[]
       user_chapter_progress: Prisma.$UserChapterProgressPayload<ExtArgs>[]
       user_quiz_attempts: Prisma.$UserQuizAttemptPayload<ExtArgs>[]
@@ -2713,7 +2827,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     courses<T extends User$coursesArgs<ExtArgs> = {}>(args?: Subset<T, User$coursesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoursePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    course_pdfs<T extends User$course_pdfsArgs<ExtArgs> = {}>(args?: Subset<T, User$course_pdfsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoursePdfPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    course_resources<T extends User$course_resourcesArgs<ExtArgs> = {}>(args?: Subset<T, User$course_resourcesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CourseResourcePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     user_course_progress<T extends User$user_course_progressArgs<ExtArgs> = {}>(args?: Subset<T, User$user_course_progressArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCourseProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     user_chapter_progress<T extends User$user_chapter_progressArgs<ExtArgs> = {}>(args?: Subset<T, User$user_chapter_progressArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserChapterProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     user_quiz_attempts<T extends User$user_quiz_attemptsArgs<ExtArgs> = {}>(args?: Subset<T, User$user_quiz_attemptsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserQuizAttemptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3121,27 +3235,27 @@ export namespace Prisma {
   }
 
   /**
-   * User.course_pdfs
+   * User.course_resources
    */
-  export type User$course_pdfsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$course_resourcesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CoursePdf
+     * Select specific fields to fetch from the CourseResource
      */
-    select?: CoursePdfSelect<ExtArgs> | null
+    select?: CourseResourceSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CoursePdf
+     * Omit specific fields from the CourseResource
      */
-    omit?: CoursePdfOmit<ExtArgs> | null
+    omit?: CourseResourceOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CoursePdfInclude<ExtArgs> | null
-    where?: CoursePdfWhereInput
-    orderBy?: CoursePdfOrderByWithRelationInput | CoursePdfOrderByWithRelationInput[]
-    cursor?: CoursePdfWhereUniqueInput
+    include?: CourseResourceInclude<ExtArgs> | null
+    where?: CourseResourceWhereInput
+    orderBy?: CourseResourceOrderByWithRelationInput | CourseResourceOrderByWithRelationInput[]
+    cursor?: CourseResourceWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: CoursePdfScalarFieldEnum | CoursePdfScalarFieldEnum[]
+    distinct?: CourseResourceScalarFieldEnum | CourseResourceScalarFieldEnum[]
   }
 
   /**
@@ -3479,7 +3593,7 @@ export namespace Prisma {
     updated_at?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     chapters?: boolean | Course$chaptersArgs<ExtArgs>
-    course_pdfs?: boolean | Course$course_pdfsArgs<ExtArgs>
+    course_resources?: boolean | Course$course_resourcesArgs<ExtArgs>
     user_course_progress?: boolean | Course$user_course_progressArgs<ExtArgs>
     _count?: boolean | CourseCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["course"]>
@@ -3500,7 +3614,7 @@ export namespace Prisma {
   export type CourseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     chapters?: boolean | Course$chaptersArgs<ExtArgs>
-    course_pdfs?: boolean | Course$course_pdfsArgs<ExtArgs>
+    course_resources?: boolean | Course$course_resourcesArgs<ExtArgs>
     user_course_progress?: boolean | Course$user_course_progressArgs<ExtArgs>
     _count?: boolean | CourseCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -3510,7 +3624,7 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       chapters: Prisma.$ChapterPayload<ExtArgs>[]
-      course_pdfs: Prisma.$CoursePdfPayload<ExtArgs>[]
+      course_resources: Prisma.$CourseResourcePayload<ExtArgs>[]
       user_course_progress: Prisma.$UserCourseProgressPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -3863,7 +3977,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     chapters<T extends Course$chaptersArgs<ExtArgs> = {}>(args?: Subset<T, Course$chaptersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChapterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    course_pdfs<T extends Course$course_pdfsArgs<ExtArgs> = {}>(args?: Subset<T, Course$course_pdfsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoursePdfPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    course_resources<T extends Course$course_resourcesArgs<ExtArgs> = {}>(args?: Subset<T, Course$course_resourcesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CourseResourcePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     user_course_progress<T extends Course$user_course_progressArgs<ExtArgs> = {}>(args?: Subset<T, Course$user_course_progressArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCourseProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4268,27 +4382,27 @@ export namespace Prisma {
   }
 
   /**
-   * Course.course_pdfs
+   * Course.course_resources
    */
-  export type Course$course_pdfsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Course$course_resourcesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CoursePdf
+     * Select specific fields to fetch from the CourseResource
      */
-    select?: CoursePdfSelect<ExtArgs> | null
+    select?: CourseResourceSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CoursePdf
+     * Omit specific fields from the CourseResource
      */
-    omit?: CoursePdfOmit<ExtArgs> | null
+    omit?: CourseResourceOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CoursePdfInclude<ExtArgs> | null
-    where?: CoursePdfWhereInput
-    orderBy?: CoursePdfOrderByWithRelationInput | CoursePdfOrderByWithRelationInput[]
-    cursor?: CoursePdfWhereUniqueInput
+    include?: CourseResourceInclude<ExtArgs> | null
+    where?: CourseResourceWhereInput
+    orderBy?: CourseResourceOrderByWithRelationInput | CourseResourceOrderByWithRelationInput[]
+    cursor?: CourseResourceWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: CoursePdfScalarFieldEnum | CoursePdfScalarFieldEnum[]
+    distinct?: CourseResourceScalarFieldEnum | CourseResourceScalarFieldEnum[]
   }
 
   /**
@@ -13679,390 +13793,407 @@ export namespace Prisma {
 
 
   /**
-   * Model CoursePdf
+   * Model CourseResource
    */
 
-  export type AggregateCoursePdf = {
-    _count: CoursePdfCountAggregateOutputType | null
-    _avg: CoursePdfAvgAggregateOutputType | null
-    _sum: CoursePdfSumAggregateOutputType | null
-    _min: CoursePdfMinAggregateOutputType | null
-    _max: CoursePdfMaxAggregateOutputType | null
+  export type AggregateCourseResource = {
+    _count: CourseResourceCountAggregateOutputType | null
+    _avg: CourseResourceAvgAggregateOutputType | null
+    _sum: CourseResourceSumAggregateOutputType | null
+    _min: CourseResourceMinAggregateOutputType | null
+    _max: CourseResourceMaxAggregateOutputType | null
   }
 
-  export type CoursePdfAvgAggregateOutputType = {
+  export type CourseResourceAvgAggregateOutputType = {
     id: number | null
+    resource_type_id: number | null
     course_id: number | null
     user_id: number | null
   }
 
-  export type CoursePdfSumAggregateOutputType = {
+  export type CourseResourceSumAggregateOutputType = {
     id: bigint | null
+    resource_type_id: bigint | null
     course_id: bigint | null
     user_id: bigint | null
   }
 
-  export type CoursePdfMinAggregateOutputType = {
+  export type CourseResourceMinAggregateOutputType = {
     id: bigint | null
+    resource_type_id: bigint | null
     course_id: bigint | null
     user_id: bigint | null
-    pdf_url: string | null
+    resource_url: string | null
     created_at: Date | null
     updated_at: Date | null
   }
 
-  export type CoursePdfMaxAggregateOutputType = {
+  export type CourseResourceMaxAggregateOutputType = {
     id: bigint | null
+    resource_type_id: bigint | null
     course_id: bigint | null
     user_id: bigint | null
-    pdf_url: string | null
+    resource_url: string | null
     created_at: Date | null
     updated_at: Date | null
   }
 
-  export type CoursePdfCountAggregateOutputType = {
+  export type CourseResourceCountAggregateOutputType = {
     id: number
+    resource_type_id: number
     course_id: number
     user_id: number
-    pdf_url: number
+    resource_url: number
     created_at: number
     updated_at: number
     _all: number
   }
 
 
-  export type CoursePdfAvgAggregateInputType = {
+  export type CourseResourceAvgAggregateInputType = {
     id?: true
+    resource_type_id?: true
     course_id?: true
     user_id?: true
   }
 
-  export type CoursePdfSumAggregateInputType = {
+  export type CourseResourceSumAggregateInputType = {
     id?: true
+    resource_type_id?: true
     course_id?: true
     user_id?: true
   }
 
-  export type CoursePdfMinAggregateInputType = {
+  export type CourseResourceMinAggregateInputType = {
     id?: true
+    resource_type_id?: true
     course_id?: true
     user_id?: true
-    pdf_url?: true
+    resource_url?: true
     created_at?: true
     updated_at?: true
   }
 
-  export type CoursePdfMaxAggregateInputType = {
+  export type CourseResourceMaxAggregateInputType = {
     id?: true
+    resource_type_id?: true
     course_id?: true
     user_id?: true
-    pdf_url?: true
+    resource_url?: true
     created_at?: true
     updated_at?: true
   }
 
-  export type CoursePdfCountAggregateInputType = {
+  export type CourseResourceCountAggregateInputType = {
     id?: true
+    resource_type_id?: true
     course_id?: true
     user_id?: true
-    pdf_url?: true
+    resource_url?: true
     created_at?: true
     updated_at?: true
     _all?: true
   }
 
-  export type CoursePdfAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CourseResourceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which CoursePdf to aggregate.
+     * Filter which CourseResource to aggregate.
      */
-    where?: CoursePdfWhereInput
+    where?: CourseResourceWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CoursePdfs to fetch.
+     * Determine the order of CourseResources to fetch.
      */
-    orderBy?: CoursePdfOrderByWithRelationInput | CoursePdfOrderByWithRelationInput[]
+    orderBy?: CourseResourceOrderByWithRelationInput | CourseResourceOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: CoursePdfWhereUniqueInput
+    cursor?: CourseResourceWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CoursePdfs from the position of the cursor.
+     * Take `±n` CourseResources from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CoursePdfs.
+     * Skip the first `n` CourseResources.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned CoursePdfs
+     * Count returned CourseResources
     **/
-    _count?: true | CoursePdfCountAggregateInputType
+    _count?: true | CourseResourceCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: CoursePdfAvgAggregateInputType
+    _avg?: CourseResourceAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: CoursePdfSumAggregateInputType
+    _sum?: CourseResourceSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: CoursePdfMinAggregateInputType
+    _min?: CourseResourceMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: CoursePdfMaxAggregateInputType
+    _max?: CourseResourceMaxAggregateInputType
   }
 
-  export type GetCoursePdfAggregateType<T extends CoursePdfAggregateArgs> = {
-        [P in keyof T & keyof AggregateCoursePdf]: P extends '_count' | 'count'
+  export type GetCourseResourceAggregateType<T extends CourseResourceAggregateArgs> = {
+        [P in keyof T & keyof AggregateCourseResource]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateCoursePdf[P]>
-      : GetScalarType<T[P], AggregateCoursePdf[P]>
+        : GetScalarType<T[P], AggregateCourseResource[P]>
+      : GetScalarType<T[P], AggregateCourseResource[P]>
   }
 
 
 
 
-  export type CoursePdfGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CoursePdfWhereInput
-    orderBy?: CoursePdfOrderByWithAggregationInput | CoursePdfOrderByWithAggregationInput[]
-    by: CoursePdfScalarFieldEnum[] | CoursePdfScalarFieldEnum
-    having?: CoursePdfScalarWhereWithAggregatesInput
+  export type CourseResourceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CourseResourceWhereInput
+    orderBy?: CourseResourceOrderByWithAggregationInput | CourseResourceOrderByWithAggregationInput[]
+    by: CourseResourceScalarFieldEnum[] | CourseResourceScalarFieldEnum
+    having?: CourseResourceScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: CoursePdfCountAggregateInputType | true
-    _avg?: CoursePdfAvgAggregateInputType
-    _sum?: CoursePdfSumAggregateInputType
-    _min?: CoursePdfMinAggregateInputType
-    _max?: CoursePdfMaxAggregateInputType
+    _count?: CourseResourceCountAggregateInputType | true
+    _avg?: CourseResourceAvgAggregateInputType
+    _sum?: CourseResourceSumAggregateInputType
+    _min?: CourseResourceMinAggregateInputType
+    _max?: CourseResourceMaxAggregateInputType
   }
 
-  export type CoursePdfGroupByOutputType = {
+  export type CourseResourceGroupByOutputType = {
     id: bigint
+    resource_type_id: bigint
     course_id: bigint
     user_id: bigint
-    pdf_url: string
+    resource_url: string
     created_at: Date
     updated_at: Date
-    _count: CoursePdfCountAggregateOutputType | null
-    _avg: CoursePdfAvgAggregateOutputType | null
-    _sum: CoursePdfSumAggregateOutputType | null
-    _min: CoursePdfMinAggregateOutputType | null
-    _max: CoursePdfMaxAggregateOutputType | null
+    _count: CourseResourceCountAggregateOutputType | null
+    _avg: CourseResourceAvgAggregateOutputType | null
+    _sum: CourseResourceSumAggregateOutputType | null
+    _min: CourseResourceMinAggregateOutputType | null
+    _max: CourseResourceMaxAggregateOutputType | null
   }
 
-  type GetCoursePdfGroupByPayload<T extends CoursePdfGroupByArgs> = Prisma.PrismaPromise<
+  type GetCourseResourceGroupByPayload<T extends CourseResourceGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<CoursePdfGroupByOutputType, T['by']> &
+      PickEnumerable<CourseResourceGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof CoursePdfGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof CourseResourceGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], CoursePdfGroupByOutputType[P]>
-            : GetScalarType<T[P], CoursePdfGroupByOutputType[P]>
+              : GetScalarType<T[P], CourseResourceGroupByOutputType[P]>
+            : GetScalarType<T[P], CourseResourceGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type CoursePdfSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CourseResourceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    resource_type_id?: boolean
     course_id?: boolean
     user_id?: boolean
-    pdf_url?: boolean
+    resource_url?: boolean
     created_at?: boolean
     updated_at?: boolean
     course?: boolean | CourseDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["coursePdf"]>
+    resource_type?: boolean | ResourceTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["courseResource"]>
 
 
 
-  export type CoursePdfSelectScalar = {
+  export type CourseResourceSelectScalar = {
     id?: boolean
+    resource_type_id?: boolean
     course_id?: boolean
     user_id?: boolean
-    pdf_url?: boolean
+    resource_url?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
 
-  export type CoursePdfOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "course_id" | "user_id" | "pdf_url" | "created_at" | "updated_at", ExtArgs["result"]["coursePdf"]>
-  export type CoursePdfInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CourseResourceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "resource_type_id" | "course_id" | "user_id" | "resource_url" | "created_at" | "updated_at", ExtArgs["result"]["courseResource"]>
+  export type CourseResourceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     course?: boolean | CourseDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
+    resource_type?: boolean | ResourceTypeDefaultArgs<ExtArgs>
   }
 
-  export type $CoursePdfPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "CoursePdf"
+  export type $CourseResourcePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CourseResource"
     objects: {
       course: Prisma.$CoursePayload<ExtArgs>
       user: Prisma.$UserPayload<ExtArgs>
+      resource_type: Prisma.$ResourceTypePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: bigint
+      resource_type_id: bigint
       course_id: bigint
       user_id: bigint
-      pdf_url: string
+      resource_url: string
       created_at: Date
       updated_at: Date
-    }, ExtArgs["result"]["coursePdf"]>
+    }, ExtArgs["result"]["courseResource"]>
     composites: {}
   }
 
-  type CoursePdfGetPayload<S extends boolean | null | undefined | CoursePdfDefaultArgs> = $Result.GetResult<Prisma.$CoursePdfPayload, S>
+  type CourseResourceGetPayload<S extends boolean | null | undefined | CourseResourceDefaultArgs> = $Result.GetResult<Prisma.$CourseResourcePayload, S>
 
-  type CoursePdfCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CoursePdfFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CoursePdfCountAggregateInputType | true
+  type CourseResourceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CourseResourceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CourseResourceCountAggregateInputType | true
     }
 
-  export interface CoursePdfDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CoursePdf'], meta: { name: 'CoursePdf' } }
+  export interface CourseResourceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CourseResource'], meta: { name: 'CourseResource' } }
     /**
-     * Find zero or one CoursePdf that matches the filter.
-     * @param {CoursePdfFindUniqueArgs} args - Arguments to find a CoursePdf
+     * Find zero or one CourseResource that matches the filter.
+     * @param {CourseResourceFindUniqueArgs} args - Arguments to find a CourseResource
      * @example
-     * // Get one CoursePdf
-     * const coursePdf = await prisma.coursePdf.findUnique({
+     * // Get one CourseResource
+     * const courseResource = await prisma.courseResource.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends CoursePdfFindUniqueArgs>(args: SelectSubset<T, CoursePdfFindUniqueArgs<ExtArgs>>): Prisma__CoursePdfClient<$Result.GetResult<Prisma.$CoursePdfPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends CourseResourceFindUniqueArgs>(args: SelectSubset<T, CourseResourceFindUniqueArgs<ExtArgs>>): Prisma__CourseResourceClient<$Result.GetResult<Prisma.$CourseResourcePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one CoursePdf that matches the filter or throw an error with `error.code='P2025'`
+     * Find one CourseResource that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {CoursePdfFindUniqueOrThrowArgs} args - Arguments to find a CoursePdf
+     * @param {CourseResourceFindUniqueOrThrowArgs} args - Arguments to find a CourseResource
      * @example
-     * // Get one CoursePdf
-     * const coursePdf = await prisma.coursePdf.findUniqueOrThrow({
+     * // Get one CourseResource
+     * const courseResource = await prisma.courseResource.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends CoursePdfFindUniqueOrThrowArgs>(args: SelectSubset<T, CoursePdfFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CoursePdfClient<$Result.GetResult<Prisma.$CoursePdfPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends CourseResourceFindUniqueOrThrowArgs>(args: SelectSubset<T, CourseResourceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CourseResourceClient<$Result.GetResult<Prisma.$CourseResourcePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first CoursePdf that matches the filter.
+     * Find the first CourseResource that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CoursePdfFindFirstArgs} args - Arguments to find a CoursePdf
+     * @param {CourseResourceFindFirstArgs} args - Arguments to find a CourseResource
      * @example
-     * // Get one CoursePdf
-     * const coursePdf = await prisma.coursePdf.findFirst({
+     * // Get one CourseResource
+     * const courseResource = await prisma.courseResource.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends CoursePdfFindFirstArgs>(args?: SelectSubset<T, CoursePdfFindFirstArgs<ExtArgs>>): Prisma__CoursePdfClient<$Result.GetResult<Prisma.$CoursePdfPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends CourseResourceFindFirstArgs>(args?: SelectSubset<T, CourseResourceFindFirstArgs<ExtArgs>>): Prisma__CourseResourceClient<$Result.GetResult<Prisma.$CourseResourcePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first CoursePdf that matches the filter or
+     * Find the first CourseResource that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CoursePdfFindFirstOrThrowArgs} args - Arguments to find a CoursePdf
+     * @param {CourseResourceFindFirstOrThrowArgs} args - Arguments to find a CourseResource
      * @example
-     * // Get one CoursePdf
-     * const coursePdf = await prisma.coursePdf.findFirstOrThrow({
+     * // Get one CourseResource
+     * const courseResource = await prisma.courseResource.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends CoursePdfFindFirstOrThrowArgs>(args?: SelectSubset<T, CoursePdfFindFirstOrThrowArgs<ExtArgs>>): Prisma__CoursePdfClient<$Result.GetResult<Prisma.$CoursePdfPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends CourseResourceFindFirstOrThrowArgs>(args?: SelectSubset<T, CourseResourceFindFirstOrThrowArgs<ExtArgs>>): Prisma__CourseResourceClient<$Result.GetResult<Prisma.$CourseResourcePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more CoursePdfs that matches the filter.
+     * Find zero or more CourseResources that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CoursePdfFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {CourseResourceFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all CoursePdfs
-     * const coursePdfs = await prisma.coursePdf.findMany()
+     * // Get all CourseResources
+     * const courseResources = await prisma.courseResource.findMany()
      * 
-     * // Get first 10 CoursePdfs
-     * const coursePdfs = await prisma.coursePdf.findMany({ take: 10 })
+     * // Get first 10 CourseResources
+     * const courseResources = await prisma.courseResource.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const coursePdfWithIdOnly = await prisma.coursePdf.findMany({ select: { id: true } })
+     * const courseResourceWithIdOnly = await prisma.courseResource.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends CoursePdfFindManyArgs>(args?: SelectSubset<T, CoursePdfFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoursePdfPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends CourseResourceFindManyArgs>(args?: SelectSubset<T, CourseResourceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CourseResourcePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a CoursePdf.
-     * @param {CoursePdfCreateArgs} args - Arguments to create a CoursePdf.
+     * Create a CourseResource.
+     * @param {CourseResourceCreateArgs} args - Arguments to create a CourseResource.
      * @example
-     * // Create one CoursePdf
-     * const CoursePdf = await prisma.coursePdf.create({
+     * // Create one CourseResource
+     * const CourseResource = await prisma.courseResource.create({
      *   data: {
-     *     // ... data to create a CoursePdf
+     *     // ... data to create a CourseResource
      *   }
      * })
      * 
      */
-    create<T extends CoursePdfCreateArgs>(args: SelectSubset<T, CoursePdfCreateArgs<ExtArgs>>): Prisma__CoursePdfClient<$Result.GetResult<Prisma.$CoursePdfPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends CourseResourceCreateArgs>(args: SelectSubset<T, CourseResourceCreateArgs<ExtArgs>>): Prisma__CourseResourceClient<$Result.GetResult<Prisma.$CourseResourcePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many CoursePdfs.
-     * @param {CoursePdfCreateManyArgs} args - Arguments to create many CoursePdfs.
+     * Create many CourseResources.
+     * @param {CourseResourceCreateManyArgs} args - Arguments to create many CourseResources.
      * @example
-     * // Create many CoursePdfs
-     * const coursePdf = await prisma.coursePdf.createMany({
+     * // Create many CourseResources
+     * const courseResource = await prisma.courseResource.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends CoursePdfCreateManyArgs>(args?: SelectSubset<T, CoursePdfCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends CourseResourceCreateManyArgs>(args?: SelectSubset<T, CourseResourceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a CoursePdf.
-     * @param {CoursePdfDeleteArgs} args - Arguments to delete one CoursePdf.
+     * Delete a CourseResource.
+     * @param {CourseResourceDeleteArgs} args - Arguments to delete one CourseResource.
      * @example
-     * // Delete one CoursePdf
-     * const CoursePdf = await prisma.coursePdf.delete({
+     * // Delete one CourseResource
+     * const CourseResource = await prisma.courseResource.delete({
      *   where: {
-     *     // ... filter to delete one CoursePdf
+     *     // ... filter to delete one CourseResource
      *   }
      * })
      * 
      */
-    delete<T extends CoursePdfDeleteArgs>(args: SelectSubset<T, CoursePdfDeleteArgs<ExtArgs>>): Prisma__CoursePdfClient<$Result.GetResult<Prisma.$CoursePdfPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends CourseResourceDeleteArgs>(args: SelectSubset<T, CourseResourceDeleteArgs<ExtArgs>>): Prisma__CourseResourceClient<$Result.GetResult<Prisma.$CourseResourcePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one CoursePdf.
-     * @param {CoursePdfUpdateArgs} args - Arguments to update one CoursePdf.
+     * Update one CourseResource.
+     * @param {CourseResourceUpdateArgs} args - Arguments to update one CourseResource.
      * @example
-     * // Update one CoursePdf
-     * const coursePdf = await prisma.coursePdf.update({
+     * // Update one CourseResource
+     * const courseResource = await prisma.courseResource.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -14072,30 +14203,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends CoursePdfUpdateArgs>(args: SelectSubset<T, CoursePdfUpdateArgs<ExtArgs>>): Prisma__CoursePdfClient<$Result.GetResult<Prisma.$CoursePdfPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends CourseResourceUpdateArgs>(args: SelectSubset<T, CourseResourceUpdateArgs<ExtArgs>>): Prisma__CourseResourceClient<$Result.GetResult<Prisma.$CourseResourcePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more CoursePdfs.
-     * @param {CoursePdfDeleteManyArgs} args - Arguments to filter CoursePdfs to delete.
+     * Delete zero or more CourseResources.
+     * @param {CourseResourceDeleteManyArgs} args - Arguments to filter CourseResources to delete.
      * @example
-     * // Delete a few CoursePdfs
-     * const { count } = await prisma.coursePdf.deleteMany({
+     * // Delete a few CourseResources
+     * const { count } = await prisma.courseResource.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends CoursePdfDeleteManyArgs>(args?: SelectSubset<T, CoursePdfDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends CourseResourceDeleteManyArgs>(args?: SelectSubset<T, CourseResourceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more CoursePdfs.
+     * Update zero or more CourseResources.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CoursePdfUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {CourseResourceUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many CoursePdfs
-     * const coursePdf = await prisma.coursePdf.updateMany({
+     * // Update many CourseResources
+     * const courseResource = await prisma.courseResource.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -14105,56 +14236,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends CoursePdfUpdateManyArgs>(args: SelectSubset<T, CoursePdfUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends CourseResourceUpdateManyArgs>(args: SelectSubset<T, CourseResourceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one CoursePdf.
-     * @param {CoursePdfUpsertArgs} args - Arguments to update or create a CoursePdf.
+     * Create or update one CourseResource.
+     * @param {CourseResourceUpsertArgs} args - Arguments to update or create a CourseResource.
      * @example
-     * // Update or create a CoursePdf
-     * const coursePdf = await prisma.coursePdf.upsert({
+     * // Update or create a CourseResource
+     * const courseResource = await prisma.courseResource.upsert({
      *   create: {
-     *     // ... data to create a CoursePdf
+     *     // ... data to create a CourseResource
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the CoursePdf we want to update
+     *     // ... the filter for the CourseResource we want to update
      *   }
      * })
      */
-    upsert<T extends CoursePdfUpsertArgs>(args: SelectSubset<T, CoursePdfUpsertArgs<ExtArgs>>): Prisma__CoursePdfClient<$Result.GetResult<Prisma.$CoursePdfPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends CourseResourceUpsertArgs>(args: SelectSubset<T, CourseResourceUpsertArgs<ExtArgs>>): Prisma__CourseResourceClient<$Result.GetResult<Prisma.$CourseResourcePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of CoursePdfs.
+     * Count the number of CourseResources.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CoursePdfCountArgs} args - Arguments to filter CoursePdfs to count.
+     * @param {CourseResourceCountArgs} args - Arguments to filter CourseResources to count.
      * @example
-     * // Count the number of CoursePdfs
-     * const count = await prisma.coursePdf.count({
+     * // Count the number of CourseResources
+     * const count = await prisma.courseResource.count({
      *   where: {
-     *     // ... the filter for the CoursePdfs we want to count
+     *     // ... the filter for the CourseResources we want to count
      *   }
      * })
     **/
-    count<T extends CoursePdfCountArgs>(
-      args?: Subset<T, CoursePdfCountArgs>,
+    count<T extends CourseResourceCountArgs>(
+      args?: Subset<T, CourseResourceCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], CoursePdfCountAggregateOutputType>
+          : GetScalarType<T['select'], CourseResourceCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a CoursePdf.
+     * Allows you to perform aggregations operations on a CourseResource.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CoursePdfAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {CourseResourceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -14174,13 +14305,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends CoursePdfAggregateArgs>(args: Subset<T, CoursePdfAggregateArgs>): Prisma.PrismaPromise<GetCoursePdfAggregateType<T>>
+    aggregate<T extends CourseResourceAggregateArgs>(args: Subset<T, CourseResourceAggregateArgs>): Prisma.PrismaPromise<GetCourseResourceAggregateType<T>>
 
     /**
-     * Group by CoursePdf.
+     * Group by CourseResource.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CoursePdfGroupByArgs} args - Group by arguments.
+     * @param {CourseResourceGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -14195,14 +14326,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends CoursePdfGroupByArgs,
+      T extends CourseResourceGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CoursePdfGroupByArgs['orderBy'] }
-        : { orderBy?: CoursePdfGroupByArgs['orderBy'] },
+        ? { orderBy: CourseResourceGroupByArgs['orderBy'] }
+        : { orderBy?: CourseResourceGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -14251,23 +14382,24 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, CoursePdfGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCoursePdfGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, CourseResourceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCourseResourceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the CoursePdf model
+   * Fields of the CourseResource model
    */
-  readonly fields: CoursePdfFieldRefs;
+  readonly fields: CourseResourceFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for CoursePdf.
+   * The delegate class that acts as a "Promise-like" for CourseResource.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CoursePdfClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__CourseResourceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     course<T extends CourseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CourseDefaultArgs<ExtArgs>>): Prisma__CourseClient<$Result.GetResult<Prisma.$CoursePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    resource_type<T extends ResourceTypeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ResourceTypeDefaultArgs<ExtArgs>>): Prisma__ResourceTypeClient<$Result.GetResult<Prisma.$ResourceTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14294,373 +14426,1352 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the CoursePdf model
+   * Fields of the CourseResource model
    */
-  interface CoursePdfFieldRefs {
-    readonly id: FieldRef<"CoursePdf", 'BigInt'>
-    readonly course_id: FieldRef<"CoursePdf", 'BigInt'>
-    readonly user_id: FieldRef<"CoursePdf", 'BigInt'>
-    readonly pdf_url: FieldRef<"CoursePdf", 'String'>
-    readonly created_at: FieldRef<"CoursePdf", 'DateTime'>
-    readonly updated_at: FieldRef<"CoursePdf", 'DateTime'>
+  interface CourseResourceFieldRefs {
+    readonly id: FieldRef<"CourseResource", 'BigInt'>
+    readonly resource_type_id: FieldRef<"CourseResource", 'BigInt'>
+    readonly course_id: FieldRef<"CourseResource", 'BigInt'>
+    readonly user_id: FieldRef<"CourseResource", 'BigInt'>
+    readonly resource_url: FieldRef<"CourseResource", 'String'>
+    readonly created_at: FieldRef<"CourseResource", 'DateTime'>
+    readonly updated_at: FieldRef<"CourseResource", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * CoursePdf findUnique
+   * CourseResource findUnique
    */
-  export type CoursePdfFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CourseResourceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CoursePdf
+     * Select specific fields to fetch from the CourseResource
      */
-    select?: CoursePdfSelect<ExtArgs> | null
+    select?: CourseResourceSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CoursePdf
+     * Omit specific fields from the CourseResource
      */
-    omit?: CoursePdfOmit<ExtArgs> | null
+    omit?: CourseResourceOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CoursePdfInclude<ExtArgs> | null
+    include?: CourseResourceInclude<ExtArgs> | null
     /**
-     * Filter, which CoursePdf to fetch.
+     * Filter, which CourseResource to fetch.
      */
-    where: CoursePdfWhereUniqueInput
+    where: CourseResourceWhereUniqueInput
   }
 
   /**
-   * CoursePdf findUniqueOrThrow
+   * CourseResource findUniqueOrThrow
    */
-  export type CoursePdfFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CourseResourceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CoursePdf
+     * Select specific fields to fetch from the CourseResource
      */
-    select?: CoursePdfSelect<ExtArgs> | null
+    select?: CourseResourceSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CoursePdf
+     * Omit specific fields from the CourseResource
      */
-    omit?: CoursePdfOmit<ExtArgs> | null
+    omit?: CourseResourceOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CoursePdfInclude<ExtArgs> | null
+    include?: CourseResourceInclude<ExtArgs> | null
     /**
-     * Filter, which CoursePdf to fetch.
+     * Filter, which CourseResource to fetch.
      */
-    where: CoursePdfWhereUniqueInput
+    where: CourseResourceWhereUniqueInput
   }
 
   /**
-   * CoursePdf findFirst
+   * CourseResource findFirst
    */
-  export type CoursePdfFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CourseResourceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CoursePdf
+     * Select specific fields to fetch from the CourseResource
      */
-    select?: CoursePdfSelect<ExtArgs> | null
+    select?: CourseResourceSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CoursePdf
+     * Omit specific fields from the CourseResource
      */
-    omit?: CoursePdfOmit<ExtArgs> | null
+    omit?: CourseResourceOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CoursePdfInclude<ExtArgs> | null
+    include?: CourseResourceInclude<ExtArgs> | null
     /**
-     * Filter, which CoursePdf to fetch.
+     * Filter, which CourseResource to fetch.
      */
-    where?: CoursePdfWhereInput
+    where?: CourseResourceWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CoursePdfs to fetch.
+     * Determine the order of CourseResources to fetch.
      */
-    orderBy?: CoursePdfOrderByWithRelationInput | CoursePdfOrderByWithRelationInput[]
+    orderBy?: CourseResourceOrderByWithRelationInput | CourseResourceOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for CoursePdfs.
+     * Sets the position for searching for CourseResources.
      */
-    cursor?: CoursePdfWhereUniqueInput
+    cursor?: CourseResourceWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CoursePdfs from the position of the cursor.
+     * Take `±n` CourseResources from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CoursePdfs.
+     * Skip the first `n` CourseResources.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of CoursePdfs.
+     * Filter by unique combinations of CourseResources.
      */
-    distinct?: CoursePdfScalarFieldEnum | CoursePdfScalarFieldEnum[]
+    distinct?: CourseResourceScalarFieldEnum | CourseResourceScalarFieldEnum[]
   }
 
   /**
-   * CoursePdf findFirstOrThrow
+   * CourseResource findFirstOrThrow
    */
-  export type CoursePdfFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CourseResourceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CoursePdf
+     * Select specific fields to fetch from the CourseResource
      */
-    select?: CoursePdfSelect<ExtArgs> | null
+    select?: CourseResourceSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CoursePdf
+     * Omit specific fields from the CourseResource
      */
-    omit?: CoursePdfOmit<ExtArgs> | null
+    omit?: CourseResourceOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CoursePdfInclude<ExtArgs> | null
+    include?: CourseResourceInclude<ExtArgs> | null
     /**
-     * Filter, which CoursePdf to fetch.
+     * Filter, which CourseResource to fetch.
      */
-    where?: CoursePdfWhereInput
+    where?: CourseResourceWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CoursePdfs to fetch.
+     * Determine the order of CourseResources to fetch.
      */
-    orderBy?: CoursePdfOrderByWithRelationInput | CoursePdfOrderByWithRelationInput[]
+    orderBy?: CourseResourceOrderByWithRelationInput | CourseResourceOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for CoursePdfs.
+     * Sets the position for searching for CourseResources.
      */
-    cursor?: CoursePdfWhereUniqueInput
+    cursor?: CourseResourceWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CoursePdfs from the position of the cursor.
+     * Take `±n` CourseResources from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CoursePdfs.
+     * Skip the first `n` CourseResources.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of CoursePdfs.
+     * Filter by unique combinations of CourseResources.
      */
-    distinct?: CoursePdfScalarFieldEnum | CoursePdfScalarFieldEnum[]
+    distinct?: CourseResourceScalarFieldEnum | CourseResourceScalarFieldEnum[]
   }
 
   /**
-   * CoursePdf findMany
+   * CourseResource findMany
    */
-  export type CoursePdfFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CourseResourceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CoursePdf
+     * Select specific fields to fetch from the CourseResource
      */
-    select?: CoursePdfSelect<ExtArgs> | null
+    select?: CourseResourceSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CoursePdf
+     * Omit specific fields from the CourseResource
      */
-    omit?: CoursePdfOmit<ExtArgs> | null
+    omit?: CourseResourceOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CoursePdfInclude<ExtArgs> | null
+    include?: CourseResourceInclude<ExtArgs> | null
     /**
-     * Filter, which CoursePdfs to fetch.
+     * Filter, which CourseResources to fetch.
      */
-    where?: CoursePdfWhereInput
+    where?: CourseResourceWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CoursePdfs to fetch.
+     * Determine the order of CourseResources to fetch.
      */
-    orderBy?: CoursePdfOrderByWithRelationInput | CoursePdfOrderByWithRelationInput[]
+    orderBy?: CourseResourceOrderByWithRelationInput | CourseResourceOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing CoursePdfs.
+     * Sets the position for listing CourseResources.
      */
-    cursor?: CoursePdfWhereUniqueInput
+    cursor?: CourseResourceWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CoursePdfs from the position of the cursor.
+     * Take `±n` CourseResources from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CoursePdfs.
+     * Skip the first `n` CourseResources.
      */
     skip?: number
-    distinct?: CoursePdfScalarFieldEnum | CoursePdfScalarFieldEnum[]
+    distinct?: CourseResourceScalarFieldEnum | CourseResourceScalarFieldEnum[]
   }
 
   /**
-   * CoursePdf create
+   * CourseResource create
    */
-  export type CoursePdfCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CourseResourceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CoursePdf
+     * Select specific fields to fetch from the CourseResource
      */
-    select?: CoursePdfSelect<ExtArgs> | null
+    select?: CourseResourceSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CoursePdf
+     * Omit specific fields from the CourseResource
      */
-    omit?: CoursePdfOmit<ExtArgs> | null
+    omit?: CourseResourceOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CoursePdfInclude<ExtArgs> | null
+    include?: CourseResourceInclude<ExtArgs> | null
     /**
-     * The data needed to create a CoursePdf.
+     * The data needed to create a CourseResource.
      */
-    data: XOR<CoursePdfCreateInput, CoursePdfUncheckedCreateInput>
+    data: XOR<CourseResourceCreateInput, CourseResourceUncheckedCreateInput>
   }
 
   /**
-   * CoursePdf createMany
+   * CourseResource createMany
    */
-  export type CoursePdfCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CourseResourceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many CoursePdfs.
+     * The data used to create many CourseResources.
      */
-    data: CoursePdfCreateManyInput | CoursePdfCreateManyInput[]
+    data: CourseResourceCreateManyInput | CourseResourceCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * CoursePdf update
+   * CourseResource update
    */
-  export type CoursePdfUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CourseResourceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CoursePdf
+     * Select specific fields to fetch from the CourseResource
      */
-    select?: CoursePdfSelect<ExtArgs> | null
+    select?: CourseResourceSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CoursePdf
+     * Omit specific fields from the CourseResource
      */
-    omit?: CoursePdfOmit<ExtArgs> | null
+    omit?: CourseResourceOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CoursePdfInclude<ExtArgs> | null
+    include?: CourseResourceInclude<ExtArgs> | null
     /**
-     * The data needed to update a CoursePdf.
+     * The data needed to update a CourseResource.
      */
-    data: XOR<CoursePdfUpdateInput, CoursePdfUncheckedUpdateInput>
+    data: XOR<CourseResourceUpdateInput, CourseResourceUncheckedUpdateInput>
     /**
-     * Choose, which CoursePdf to update.
+     * Choose, which CourseResource to update.
      */
-    where: CoursePdfWhereUniqueInput
+    where: CourseResourceWhereUniqueInput
   }
 
   /**
-   * CoursePdf updateMany
+   * CourseResource updateMany
    */
-  export type CoursePdfUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CourseResourceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update CoursePdfs.
+     * The data used to update CourseResources.
      */
-    data: XOR<CoursePdfUpdateManyMutationInput, CoursePdfUncheckedUpdateManyInput>
+    data: XOR<CourseResourceUpdateManyMutationInput, CourseResourceUncheckedUpdateManyInput>
     /**
-     * Filter which CoursePdfs to update
+     * Filter which CourseResources to update
      */
-    where?: CoursePdfWhereInput
+    where?: CourseResourceWhereInput
     /**
-     * Limit how many CoursePdfs to update.
+     * Limit how many CourseResources to update.
      */
     limit?: number
   }
 
   /**
-   * CoursePdf upsert
+   * CourseResource upsert
    */
-  export type CoursePdfUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CourseResourceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CoursePdf
+     * Select specific fields to fetch from the CourseResource
      */
-    select?: CoursePdfSelect<ExtArgs> | null
+    select?: CourseResourceSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CoursePdf
+     * Omit specific fields from the CourseResource
      */
-    omit?: CoursePdfOmit<ExtArgs> | null
+    omit?: CourseResourceOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CoursePdfInclude<ExtArgs> | null
+    include?: CourseResourceInclude<ExtArgs> | null
     /**
-     * The filter to search for the CoursePdf to update in case it exists.
+     * The filter to search for the CourseResource to update in case it exists.
      */
-    where: CoursePdfWhereUniqueInput
+    where: CourseResourceWhereUniqueInput
     /**
-     * In case the CoursePdf found by the `where` argument doesn't exist, create a new CoursePdf with this data.
+     * In case the CourseResource found by the `where` argument doesn't exist, create a new CourseResource with this data.
      */
-    create: XOR<CoursePdfCreateInput, CoursePdfUncheckedCreateInput>
+    create: XOR<CourseResourceCreateInput, CourseResourceUncheckedCreateInput>
     /**
-     * In case the CoursePdf was found with the provided `where` argument, update it with this data.
+     * In case the CourseResource was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<CoursePdfUpdateInput, CoursePdfUncheckedUpdateInput>
+    update: XOR<CourseResourceUpdateInput, CourseResourceUncheckedUpdateInput>
   }
 
   /**
-   * CoursePdf delete
+   * CourseResource delete
    */
-  export type CoursePdfDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CourseResourceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CoursePdf
+     * Select specific fields to fetch from the CourseResource
      */
-    select?: CoursePdfSelect<ExtArgs> | null
+    select?: CourseResourceSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CoursePdf
+     * Omit specific fields from the CourseResource
      */
-    omit?: CoursePdfOmit<ExtArgs> | null
+    omit?: CourseResourceOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CoursePdfInclude<ExtArgs> | null
+    include?: CourseResourceInclude<ExtArgs> | null
     /**
-     * Filter which CoursePdf to delete.
+     * Filter which CourseResource to delete.
      */
-    where: CoursePdfWhereUniqueInput
+    where: CourseResourceWhereUniqueInput
   }
 
   /**
-   * CoursePdf deleteMany
+   * CourseResource deleteMany
    */
-  export type CoursePdfDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CourseResourceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which CoursePdfs to delete
+     * Filter which CourseResources to delete
      */
-    where?: CoursePdfWhereInput
+    where?: CourseResourceWhereInput
     /**
-     * Limit how many CoursePdfs to delete.
+     * Limit how many CourseResources to delete.
      */
     limit?: number
   }
 
   /**
-   * CoursePdf without action
+   * CourseResource without action
    */
-  export type CoursePdfDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CourseResourceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CoursePdf
+     * Select specific fields to fetch from the CourseResource
      */
-    select?: CoursePdfSelect<ExtArgs> | null
+    select?: CourseResourceSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CoursePdf
+     * Omit specific fields from the CourseResource
      */
-    omit?: CoursePdfOmit<ExtArgs> | null
+    omit?: CourseResourceOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CoursePdfInclude<ExtArgs> | null
+    include?: CourseResourceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ResourceType
+   */
+
+  export type AggregateResourceType = {
+    _count: ResourceTypeCountAggregateOutputType | null
+    _avg: ResourceTypeAvgAggregateOutputType | null
+    _sum: ResourceTypeSumAggregateOutputType | null
+    _min: ResourceTypeMinAggregateOutputType | null
+    _max: ResourceTypeMaxAggregateOutputType | null
+  }
+
+  export type ResourceTypeAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ResourceTypeSumAggregateOutputType = {
+    id: bigint | null
+  }
+
+  export type ResourceTypeMinAggregateOutputType = {
+    id: bigint | null
+    extension: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type ResourceTypeMaxAggregateOutputType = {
+    id: bigint | null
+    extension: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type ResourceTypeCountAggregateOutputType = {
+    id: number
+    extension: number
+    created_at: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type ResourceTypeAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type ResourceTypeSumAggregateInputType = {
+    id?: true
+  }
+
+  export type ResourceTypeMinAggregateInputType = {
+    id?: true
+    extension?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type ResourceTypeMaxAggregateInputType = {
+    id?: true
+    extension?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type ResourceTypeCountAggregateInputType = {
+    id?: true
+    extension?: true
+    created_at?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type ResourceTypeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ResourceType to aggregate.
+     */
+    where?: ResourceTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ResourceTypes to fetch.
+     */
+    orderBy?: ResourceTypeOrderByWithRelationInput | ResourceTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ResourceTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ResourceTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ResourceTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ResourceTypes
+    **/
+    _count?: true | ResourceTypeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ResourceTypeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ResourceTypeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ResourceTypeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ResourceTypeMaxAggregateInputType
+  }
+
+  export type GetResourceTypeAggregateType<T extends ResourceTypeAggregateArgs> = {
+        [P in keyof T & keyof AggregateResourceType]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateResourceType[P]>
+      : GetScalarType<T[P], AggregateResourceType[P]>
+  }
+
+
+
+
+  export type ResourceTypeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ResourceTypeWhereInput
+    orderBy?: ResourceTypeOrderByWithAggregationInput | ResourceTypeOrderByWithAggregationInput[]
+    by: ResourceTypeScalarFieldEnum[] | ResourceTypeScalarFieldEnum
+    having?: ResourceTypeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ResourceTypeCountAggregateInputType | true
+    _avg?: ResourceTypeAvgAggregateInputType
+    _sum?: ResourceTypeSumAggregateInputType
+    _min?: ResourceTypeMinAggregateInputType
+    _max?: ResourceTypeMaxAggregateInputType
+  }
+
+  export type ResourceTypeGroupByOutputType = {
+    id: bigint
+    extension: string
+    created_at: Date
+    updated_at: Date
+    _count: ResourceTypeCountAggregateOutputType | null
+    _avg: ResourceTypeAvgAggregateOutputType | null
+    _sum: ResourceTypeSumAggregateOutputType | null
+    _min: ResourceTypeMinAggregateOutputType | null
+    _max: ResourceTypeMaxAggregateOutputType | null
+  }
+
+  type GetResourceTypeGroupByPayload<T extends ResourceTypeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ResourceTypeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ResourceTypeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ResourceTypeGroupByOutputType[P]>
+            : GetScalarType<T[P], ResourceTypeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ResourceTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    extension?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    course_resources?: boolean | ResourceType$course_resourcesArgs<ExtArgs>
+    _count?: boolean | ResourceTypeCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["resourceType"]>
+
+
+
+  export type ResourceTypeSelectScalar = {
+    id?: boolean
+    extension?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }
+
+  export type ResourceTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "extension" | "created_at" | "updated_at", ExtArgs["result"]["resourceType"]>
+  export type ResourceTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    course_resources?: boolean | ResourceType$course_resourcesArgs<ExtArgs>
+    _count?: boolean | ResourceTypeCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $ResourceTypePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ResourceType"
+    objects: {
+      course_resources: Prisma.$CourseResourcePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      extension: string
+      created_at: Date
+      updated_at: Date
+    }, ExtArgs["result"]["resourceType"]>
+    composites: {}
+  }
+
+  type ResourceTypeGetPayload<S extends boolean | null | undefined | ResourceTypeDefaultArgs> = $Result.GetResult<Prisma.$ResourceTypePayload, S>
+
+  type ResourceTypeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ResourceTypeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ResourceTypeCountAggregateInputType | true
+    }
+
+  export interface ResourceTypeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ResourceType'], meta: { name: 'ResourceType' } }
+    /**
+     * Find zero or one ResourceType that matches the filter.
+     * @param {ResourceTypeFindUniqueArgs} args - Arguments to find a ResourceType
+     * @example
+     * // Get one ResourceType
+     * const resourceType = await prisma.resourceType.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ResourceTypeFindUniqueArgs>(args: SelectSubset<T, ResourceTypeFindUniqueArgs<ExtArgs>>): Prisma__ResourceTypeClient<$Result.GetResult<Prisma.$ResourceTypePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ResourceType that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ResourceTypeFindUniqueOrThrowArgs} args - Arguments to find a ResourceType
+     * @example
+     * // Get one ResourceType
+     * const resourceType = await prisma.resourceType.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ResourceTypeFindUniqueOrThrowArgs>(args: SelectSubset<T, ResourceTypeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ResourceTypeClient<$Result.GetResult<Prisma.$ResourceTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ResourceType that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResourceTypeFindFirstArgs} args - Arguments to find a ResourceType
+     * @example
+     * // Get one ResourceType
+     * const resourceType = await prisma.resourceType.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ResourceTypeFindFirstArgs>(args?: SelectSubset<T, ResourceTypeFindFirstArgs<ExtArgs>>): Prisma__ResourceTypeClient<$Result.GetResult<Prisma.$ResourceTypePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ResourceType that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResourceTypeFindFirstOrThrowArgs} args - Arguments to find a ResourceType
+     * @example
+     * // Get one ResourceType
+     * const resourceType = await prisma.resourceType.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ResourceTypeFindFirstOrThrowArgs>(args?: SelectSubset<T, ResourceTypeFindFirstOrThrowArgs<ExtArgs>>): Prisma__ResourceTypeClient<$Result.GetResult<Prisma.$ResourceTypePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ResourceTypes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResourceTypeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ResourceTypes
+     * const resourceTypes = await prisma.resourceType.findMany()
+     * 
+     * // Get first 10 ResourceTypes
+     * const resourceTypes = await prisma.resourceType.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const resourceTypeWithIdOnly = await prisma.resourceType.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ResourceTypeFindManyArgs>(args?: SelectSubset<T, ResourceTypeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResourceTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ResourceType.
+     * @param {ResourceTypeCreateArgs} args - Arguments to create a ResourceType.
+     * @example
+     * // Create one ResourceType
+     * const ResourceType = await prisma.resourceType.create({
+     *   data: {
+     *     // ... data to create a ResourceType
+     *   }
+     * })
+     * 
+     */
+    create<T extends ResourceTypeCreateArgs>(args: SelectSubset<T, ResourceTypeCreateArgs<ExtArgs>>): Prisma__ResourceTypeClient<$Result.GetResult<Prisma.$ResourceTypePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ResourceTypes.
+     * @param {ResourceTypeCreateManyArgs} args - Arguments to create many ResourceTypes.
+     * @example
+     * // Create many ResourceTypes
+     * const resourceType = await prisma.resourceType.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ResourceTypeCreateManyArgs>(args?: SelectSubset<T, ResourceTypeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ResourceType.
+     * @param {ResourceTypeDeleteArgs} args - Arguments to delete one ResourceType.
+     * @example
+     * // Delete one ResourceType
+     * const ResourceType = await prisma.resourceType.delete({
+     *   where: {
+     *     // ... filter to delete one ResourceType
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ResourceTypeDeleteArgs>(args: SelectSubset<T, ResourceTypeDeleteArgs<ExtArgs>>): Prisma__ResourceTypeClient<$Result.GetResult<Prisma.$ResourceTypePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ResourceType.
+     * @param {ResourceTypeUpdateArgs} args - Arguments to update one ResourceType.
+     * @example
+     * // Update one ResourceType
+     * const resourceType = await prisma.resourceType.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ResourceTypeUpdateArgs>(args: SelectSubset<T, ResourceTypeUpdateArgs<ExtArgs>>): Prisma__ResourceTypeClient<$Result.GetResult<Prisma.$ResourceTypePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ResourceTypes.
+     * @param {ResourceTypeDeleteManyArgs} args - Arguments to filter ResourceTypes to delete.
+     * @example
+     * // Delete a few ResourceTypes
+     * const { count } = await prisma.resourceType.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ResourceTypeDeleteManyArgs>(args?: SelectSubset<T, ResourceTypeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ResourceTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResourceTypeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ResourceTypes
+     * const resourceType = await prisma.resourceType.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ResourceTypeUpdateManyArgs>(args: SelectSubset<T, ResourceTypeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ResourceType.
+     * @param {ResourceTypeUpsertArgs} args - Arguments to update or create a ResourceType.
+     * @example
+     * // Update or create a ResourceType
+     * const resourceType = await prisma.resourceType.upsert({
+     *   create: {
+     *     // ... data to create a ResourceType
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ResourceType we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ResourceTypeUpsertArgs>(args: SelectSubset<T, ResourceTypeUpsertArgs<ExtArgs>>): Prisma__ResourceTypeClient<$Result.GetResult<Prisma.$ResourceTypePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ResourceTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResourceTypeCountArgs} args - Arguments to filter ResourceTypes to count.
+     * @example
+     * // Count the number of ResourceTypes
+     * const count = await prisma.resourceType.count({
+     *   where: {
+     *     // ... the filter for the ResourceTypes we want to count
+     *   }
+     * })
+    **/
+    count<T extends ResourceTypeCountArgs>(
+      args?: Subset<T, ResourceTypeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ResourceTypeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ResourceType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResourceTypeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ResourceTypeAggregateArgs>(args: Subset<T, ResourceTypeAggregateArgs>): Prisma.PrismaPromise<GetResourceTypeAggregateType<T>>
+
+    /**
+     * Group by ResourceType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResourceTypeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ResourceTypeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ResourceTypeGroupByArgs['orderBy'] }
+        : { orderBy?: ResourceTypeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ResourceTypeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetResourceTypeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ResourceType model
+   */
+  readonly fields: ResourceTypeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ResourceType.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ResourceTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    course_resources<T extends ResourceType$course_resourcesArgs<ExtArgs> = {}>(args?: Subset<T, ResourceType$course_resourcesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CourseResourcePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ResourceType model
+   */
+  interface ResourceTypeFieldRefs {
+    readonly id: FieldRef<"ResourceType", 'BigInt'>
+    readonly extension: FieldRef<"ResourceType", 'String'>
+    readonly created_at: FieldRef<"ResourceType", 'DateTime'>
+    readonly updated_at: FieldRef<"ResourceType", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ResourceType findUnique
+   */
+  export type ResourceTypeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ResourceType
+     */
+    select?: ResourceTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ResourceType
+     */
+    omit?: ResourceTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which ResourceType to fetch.
+     */
+    where: ResourceTypeWhereUniqueInput
+  }
+
+  /**
+   * ResourceType findUniqueOrThrow
+   */
+  export type ResourceTypeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ResourceType
+     */
+    select?: ResourceTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ResourceType
+     */
+    omit?: ResourceTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which ResourceType to fetch.
+     */
+    where: ResourceTypeWhereUniqueInput
+  }
+
+  /**
+   * ResourceType findFirst
+   */
+  export type ResourceTypeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ResourceType
+     */
+    select?: ResourceTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ResourceType
+     */
+    omit?: ResourceTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which ResourceType to fetch.
+     */
+    where?: ResourceTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ResourceTypes to fetch.
+     */
+    orderBy?: ResourceTypeOrderByWithRelationInput | ResourceTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ResourceTypes.
+     */
+    cursor?: ResourceTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ResourceTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ResourceTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ResourceTypes.
+     */
+    distinct?: ResourceTypeScalarFieldEnum | ResourceTypeScalarFieldEnum[]
+  }
+
+  /**
+   * ResourceType findFirstOrThrow
+   */
+  export type ResourceTypeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ResourceType
+     */
+    select?: ResourceTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ResourceType
+     */
+    omit?: ResourceTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which ResourceType to fetch.
+     */
+    where?: ResourceTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ResourceTypes to fetch.
+     */
+    orderBy?: ResourceTypeOrderByWithRelationInput | ResourceTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ResourceTypes.
+     */
+    cursor?: ResourceTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ResourceTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ResourceTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ResourceTypes.
+     */
+    distinct?: ResourceTypeScalarFieldEnum | ResourceTypeScalarFieldEnum[]
+  }
+
+  /**
+   * ResourceType findMany
+   */
+  export type ResourceTypeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ResourceType
+     */
+    select?: ResourceTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ResourceType
+     */
+    omit?: ResourceTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which ResourceTypes to fetch.
+     */
+    where?: ResourceTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ResourceTypes to fetch.
+     */
+    orderBy?: ResourceTypeOrderByWithRelationInput | ResourceTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ResourceTypes.
+     */
+    cursor?: ResourceTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ResourceTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ResourceTypes.
+     */
+    skip?: number
+    distinct?: ResourceTypeScalarFieldEnum | ResourceTypeScalarFieldEnum[]
+  }
+
+  /**
+   * ResourceType create
+   */
+  export type ResourceTypeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ResourceType
+     */
+    select?: ResourceTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ResourceType
+     */
+    omit?: ResourceTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ResourceType.
+     */
+    data: XOR<ResourceTypeCreateInput, ResourceTypeUncheckedCreateInput>
+  }
+
+  /**
+   * ResourceType createMany
+   */
+  export type ResourceTypeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ResourceTypes.
+     */
+    data: ResourceTypeCreateManyInput | ResourceTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ResourceType update
+   */
+  export type ResourceTypeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ResourceType
+     */
+    select?: ResourceTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ResourceType
+     */
+    omit?: ResourceTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ResourceType.
+     */
+    data: XOR<ResourceTypeUpdateInput, ResourceTypeUncheckedUpdateInput>
+    /**
+     * Choose, which ResourceType to update.
+     */
+    where: ResourceTypeWhereUniqueInput
+  }
+
+  /**
+   * ResourceType updateMany
+   */
+  export type ResourceTypeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ResourceTypes.
+     */
+    data: XOR<ResourceTypeUpdateManyMutationInput, ResourceTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which ResourceTypes to update
+     */
+    where?: ResourceTypeWhereInput
+    /**
+     * Limit how many ResourceTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ResourceType upsert
+   */
+  export type ResourceTypeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ResourceType
+     */
+    select?: ResourceTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ResourceType
+     */
+    omit?: ResourceTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceTypeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ResourceType to update in case it exists.
+     */
+    where: ResourceTypeWhereUniqueInput
+    /**
+     * In case the ResourceType found by the `where` argument doesn't exist, create a new ResourceType with this data.
+     */
+    create: XOR<ResourceTypeCreateInput, ResourceTypeUncheckedCreateInput>
+    /**
+     * In case the ResourceType was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ResourceTypeUpdateInput, ResourceTypeUncheckedUpdateInput>
+  }
+
+  /**
+   * ResourceType delete
+   */
+  export type ResourceTypeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ResourceType
+     */
+    select?: ResourceTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ResourceType
+     */
+    omit?: ResourceTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceTypeInclude<ExtArgs> | null
+    /**
+     * Filter which ResourceType to delete.
+     */
+    where: ResourceTypeWhereUniqueInput
+  }
+
+  /**
+   * ResourceType deleteMany
+   */
+  export type ResourceTypeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ResourceTypes to delete
+     */
+    where?: ResourceTypeWhereInput
+    /**
+     * Limit how many ResourceTypes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ResourceType.course_resources
+   */
+  export type ResourceType$course_resourcesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourseResource
+     */
+    select?: CourseResourceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourseResource
+     */
+    omit?: CourseResourceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourseResourceInclude<ExtArgs> | null
+    where?: CourseResourceWhereInput
+    orderBy?: CourseResourceOrderByWithRelationInput | CourseResourceOrderByWithRelationInput[]
+    cursor?: CourseResourceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CourseResourceScalarFieldEnum | CourseResourceScalarFieldEnum[]
+  }
+
+  /**
+   * ResourceType without action
+   */
+  export type ResourceTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ResourceType
+     */
+    select?: ResourceTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ResourceType
+     */
+    omit?: ResourceTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceTypeInclude<ExtArgs> | null
   }
 
 
@@ -14827,16 +15938,27 @@ export namespace Prisma {
   export type UserResponseScalarFieldEnum = (typeof UserResponseScalarFieldEnum)[keyof typeof UserResponseScalarFieldEnum]
 
 
-  export const CoursePdfScalarFieldEnum: {
+  export const CourseResourceScalarFieldEnum: {
     id: 'id',
+    resource_type_id: 'resource_type_id',
     course_id: 'course_id',
     user_id: 'user_id',
-    pdf_url: 'pdf_url',
+    resource_url: 'resource_url',
     created_at: 'created_at',
     updated_at: 'updated_at'
   };
 
-  export type CoursePdfScalarFieldEnum = (typeof CoursePdfScalarFieldEnum)[keyof typeof CoursePdfScalarFieldEnum]
+  export type CourseResourceScalarFieldEnum = (typeof CourseResourceScalarFieldEnum)[keyof typeof CourseResourceScalarFieldEnum]
+
+
+  export const ResourceTypeScalarFieldEnum: {
+    id: 'id',
+    extension: 'extension',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type ResourceTypeScalarFieldEnum = (typeof ResourceTypeScalarFieldEnum)[keyof typeof ResourceTypeScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -14908,11 +16030,18 @@ export namespace Prisma {
   export type UserResponseOrderByRelevanceFieldEnum = (typeof UserResponseOrderByRelevanceFieldEnum)[keyof typeof UserResponseOrderByRelevanceFieldEnum]
 
 
-  export const CoursePdfOrderByRelevanceFieldEnum: {
-    pdf_url: 'pdf_url'
+  export const CourseResourceOrderByRelevanceFieldEnum: {
+    resource_url: 'resource_url'
   };
 
-  export type CoursePdfOrderByRelevanceFieldEnum = (typeof CoursePdfOrderByRelevanceFieldEnum)[keyof typeof CoursePdfOrderByRelevanceFieldEnum]
+  export type CourseResourceOrderByRelevanceFieldEnum = (typeof CourseResourceOrderByRelevanceFieldEnum)[keyof typeof CourseResourceOrderByRelevanceFieldEnum]
+
+
+  export const ResourceTypeOrderByRelevanceFieldEnum: {
+    extension: 'extension'
+  };
+
+  export type ResourceTypeOrderByRelevanceFieldEnum = (typeof ResourceTypeOrderByRelevanceFieldEnum)[keyof typeof ResourceTypeOrderByRelevanceFieldEnum]
 
 
   /**
@@ -14984,7 +16113,7 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"User"> | Date | string
     deleted?: BoolFilter<"User"> | boolean
     courses?: CourseListRelationFilter
-    course_pdfs?: CoursePdfListRelationFilter
+    course_resources?: CourseResourceListRelationFilter
     user_course_progress?: UserCourseProgressListRelationFilter
     user_chapter_progress?: UserChapterProgressListRelationFilter
     user_quiz_attempts?: UserQuizAttemptListRelationFilter
@@ -15000,7 +16129,7 @@ export namespace Prisma {
     updated_at?: SortOrder
     deleted?: SortOrder
     courses?: CourseOrderByRelationAggregateInput
-    course_pdfs?: CoursePdfOrderByRelationAggregateInput
+    course_resources?: CourseResourceOrderByRelationAggregateInput
     user_course_progress?: UserCourseProgressOrderByRelationAggregateInput
     user_chapter_progress?: UserChapterProgressOrderByRelationAggregateInput
     user_quiz_attempts?: UserQuizAttemptOrderByRelationAggregateInput
@@ -15020,7 +16149,7 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"User"> | Date | string
     deleted?: BoolFilter<"User"> | boolean
     courses?: CourseListRelationFilter
-    course_pdfs?: CoursePdfListRelationFilter
+    course_resources?: CourseResourceListRelationFilter
     user_course_progress?: UserCourseProgressListRelationFilter
     user_chapter_progress?: UserChapterProgressListRelationFilter
     user_quiz_attempts?: UserQuizAttemptListRelationFilter
@@ -15068,7 +16197,7 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"Course"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     chapters?: ChapterListRelationFilter
-    course_pdfs?: CoursePdfListRelationFilter
+    course_resources?: CourseResourceListRelationFilter
     user_course_progress?: UserCourseProgressListRelationFilter
   }
 
@@ -15082,7 +16211,7 @@ export namespace Prisma {
     updated_at?: SortOrder
     user?: UserOrderByWithRelationInput
     chapters?: ChapterOrderByRelationAggregateInput
-    course_pdfs?: CoursePdfOrderByRelationAggregateInput
+    course_resources?: CourseResourceOrderByRelationAggregateInput
     user_course_progress?: UserCourseProgressOrderByRelationAggregateInput
     _relevance?: CourseOrderByRelevanceInput
   }
@@ -15100,7 +16229,7 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"Course"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     chapters?: ChapterListRelationFilter
-    course_pdfs?: CoursePdfListRelationFilter
+    course_resources?: CourseResourceListRelationFilter
     user_course_progress?: UserCourseProgressListRelationFilter
   }, "id">
 
@@ -15815,70 +16944,131 @@ export namespace Prisma {
     updated_at?: DateTimeWithAggregatesFilter<"UserResponse"> | Date | string
   }
 
-  export type CoursePdfWhereInput = {
-    AND?: CoursePdfWhereInput | CoursePdfWhereInput[]
-    OR?: CoursePdfWhereInput[]
-    NOT?: CoursePdfWhereInput | CoursePdfWhereInput[]
-    id?: BigIntFilter<"CoursePdf"> | bigint | number
-    course_id?: BigIntFilter<"CoursePdf"> | bigint | number
-    user_id?: BigIntFilter<"CoursePdf"> | bigint | number
-    pdf_url?: StringFilter<"CoursePdf"> | string
-    created_at?: DateTimeFilter<"CoursePdf"> | Date | string
-    updated_at?: DateTimeFilter<"CoursePdf"> | Date | string
+  export type CourseResourceWhereInput = {
+    AND?: CourseResourceWhereInput | CourseResourceWhereInput[]
+    OR?: CourseResourceWhereInput[]
+    NOT?: CourseResourceWhereInput | CourseResourceWhereInput[]
+    id?: BigIntFilter<"CourseResource"> | bigint | number
+    resource_type_id?: BigIntFilter<"CourseResource"> | bigint | number
+    course_id?: BigIntFilter<"CourseResource"> | bigint | number
+    user_id?: BigIntFilter<"CourseResource"> | bigint | number
+    resource_url?: StringFilter<"CourseResource"> | string
+    created_at?: DateTimeFilter<"CourseResource"> | Date | string
+    updated_at?: DateTimeFilter<"CourseResource"> | Date | string
     course?: XOR<CourseScalarRelationFilter, CourseWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    resource_type?: XOR<ResourceTypeScalarRelationFilter, ResourceTypeWhereInput>
   }
 
-  export type CoursePdfOrderByWithRelationInput = {
+  export type CourseResourceOrderByWithRelationInput = {
     id?: SortOrder
+    resource_type_id?: SortOrder
     course_id?: SortOrder
     user_id?: SortOrder
-    pdf_url?: SortOrder
+    resource_url?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     course?: CourseOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
-    _relevance?: CoursePdfOrderByRelevanceInput
+    resource_type?: ResourceTypeOrderByWithRelationInput
+    _relevance?: CourseResourceOrderByRelevanceInput
   }
 
-  export type CoursePdfWhereUniqueInput = Prisma.AtLeast<{
+  export type CourseResourceWhereUniqueInput = Prisma.AtLeast<{
     id?: bigint | number
-    AND?: CoursePdfWhereInput | CoursePdfWhereInput[]
-    OR?: CoursePdfWhereInput[]
-    NOT?: CoursePdfWhereInput | CoursePdfWhereInput[]
-    course_id?: BigIntFilter<"CoursePdf"> | bigint | number
-    user_id?: BigIntFilter<"CoursePdf"> | bigint | number
-    pdf_url?: StringFilter<"CoursePdf"> | string
-    created_at?: DateTimeFilter<"CoursePdf"> | Date | string
-    updated_at?: DateTimeFilter<"CoursePdf"> | Date | string
+    AND?: CourseResourceWhereInput | CourseResourceWhereInput[]
+    OR?: CourseResourceWhereInput[]
+    NOT?: CourseResourceWhereInput | CourseResourceWhereInput[]
+    resource_type_id?: BigIntFilter<"CourseResource"> | bigint | number
+    course_id?: BigIntFilter<"CourseResource"> | bigint | number
+    user_id?: BigIntFilter<"CourseResource"> | bigint | number
+    resource_url?: StringFilter<"CourseResource"> | string
+    created_at?: DateTimeFilter<"CourseResource"> | Date | string
+    updated_at?: DateTimeFilter<"CourseResource"> | Date | string
     course?: XOR<CourseScalarRelationFilter, CourseWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    resource_type?: XOR<ResourceTypeScalarRelationFilter, ResourceTypeWhereInput>
   }, "id">
 
-  export type CoursePdfOrderByWithAggregationInput = {
+  export type CourseResourceOrderByWithAggregationInput = {
     id?: SortOrder
+    resource_type_id?: SortOrder
     course_id?: SortOrder
     user_id?: SortOrder
-    pdf_url?: SortOrder
+    resource_url?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    _count?: CoursePdfCountOrderByAggregateInput
-    _avg?: CoursePdfAvgOrderByAggregateInput
-    _max?: CoursePdfMaxOrderByAggregateInput
-    _min?: CoursePdfMinOrderByAggregateInput
-    _sum?: CoursePdfSumOrderByAggregateInput
+    _count?: CourseResourceCountOrderByAggregateInput
+    _avg?: CourseResourceAvgOrderByAggregateInput
+    _max?: CourseResourceMaxOrderByAggregateInput
+    _min?: CourseResourceMinOrderByAggregateInput
+    _sum?: CourseResourceSumOrderByAggregateInput
   }
 
-  export type CoursePdfScalarWhereWithAggregatesInput = {
-    AND?: CoursePdfScalarWhereWithAggregatesInput | CoursePdfScalarWhereWithAggregatesInput[]
-    OR?: CoursePdfScalarWhereWithAggregatesInput[]
-    NOT?: CoursePdfScalarWhereWithAggregatesInput | CoursePdfScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"CoursePdf"> | bigint | number
-    course_id?: BigIntWithAggregatesFilter<"CoursePdf"> | bigint | number
-    user_id?: BigIntWithAggregatesFilter<"CoursePdf"> | bigint | number
-    pdf_url?: StringWithAggregatesFilter<"CoursePdf"> | string
-    created_at?: DateTimeWithAggregatesFilter<"CoursePdf"> | Date | string
-    updated_at?: DateTimeWithAggregatesFilter<"CoursePdf"> | Date | string
+  export type CourseResourceScalarWhereWithAggregatesInput = {
+    AND?: CourseResourceScalarWhereWithAggregatesInput | CourseResourceScalarWhereWithAggregatesInput[]
+    OR?: CourseResourceScalarWhereWithAggregatesInput[]
+    NOT?: CourseResourceScalarWhereWithAggregatesInput | CourseResourceScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"CourseResource"> | bigint | number
+    resource_type_id?: BigIntWithAggregatesFilter<"CourseResource"> | bigint | number
+    course_id?: BigIntWithAggregatesFilter<"CourseResource"> | bigint | number
+    user_id?: BigIntWithAggregatesFilter<"CourseResource"> | bigint | number
+    resource_url?: StringWithAggregatesFilter<"CourseResource"> | string
+    created_at?: DateTimeWithAggregatesFilter<"CourseResource"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"CourseResource"> | Date | string
+  }
+
+  export type ResourceTypeWhereInput = {
+    AND?: ResourceTypeWhereInput | ResourceTypeWhereInput[]
+    OR?: ResourceTypeWhereInput[]
+    NOT?: ResourceTypeWhereInput | ResourceTypeWhereInput[]
+    id?: BigIntFilter<"ResourceType"> | bigint | number
+    extension?: StringFilter<"ResourceType"> | string
+    created_at?: DateTimeFilter<"ResourceType"> | Date | string
+    updated_at?: DateTimeFilter<"ResourceType"> | Date | string
+    course_resources?: CourseResourceListRelationFilter
+  }
+
+  export type ResourceTypeOrderByWithRelationInput = {
+    id?: SortOrder
+    extension?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    course_resources?: CourseResourceOrderByRelationAggregateInput
+    _relevance?: ResourceTypeOrderByRelevanceInput
+  }
+
+  export type ResourceTypeWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    AND?: ResourceTypeWhereInput | ResourceTypeWhereInput[]
+    OR?: ResourceTypeWhereInput[]
+    NOT?: ResourceTypeWhereInput | ResourceTypeWhereInput[]
+    extension?: StringFilter<"ResourceType"> | string
+    created_at?: DateTimeFilter<"ResourceType"> | Date | string
+    updated_at?: DateTimeFilter<"ResourceType"> | Date | string
+    course_resources?: CourseResourceListRelationFilter
+  }, "id">
+
+  export type ResourceTypeOrderByWithAggregationInput = {
+    id?: SortOrder
+    extension?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    _count?: ResourceTypeCountOrderByAggregateInput
+    _avg?: ResourceTypeAvgOrderByAggregateInput
+    _max?: ResourceTypeMaxOrderByAggregateInput
+    _min?: ResourceTypeMinOrderByAggregateInput
+    _sum?: ResourceTypeSumOrderByAggregateInput
+  }
+
+  export type ResourceTypeScalarWhereWithAggregatesInput = {
+    AND?: ResourceTypeScalarWhereWithAggregatesInput | ResourceTypeScalarWhereWithAggregatesInput[]
+    OR?: ResourceTypeScalarWhereWithAggregatesInput[]
+    NOT?: ResourceTypeScalarWhereWithAggregatesInput | ResourceTypeScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"ResourceType"> | bigint | number
+    extension?: StringWithAggregatesFilter<"ResourceType"> | string
+    created_at?: DateTimeWithAggregatesFilter<"ResourceType"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"ResourceType"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -15890,7 +17080,7 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted?: boolean
     courses?: CourseCreateNestedManyWithoutUserInput
-    course_pdfs?: CoursePdfCreateNestedManyWithoutUserInput
+    course_resources?: CourseResourceCreateNestedManyWithoutUserInput
     user_course_progress?: UserCourseProgressCreateNestedManyWithoutUserInput
     user_chapter_progress?: UserChapterProgressCreateNestedManyWithoutUserInput
     user_quiz_attempts?: UserQuizAttemptCreateNestedManyWithoutUserInput
@@ -15906,7 +17096,7 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted?: boolean
     courses?: CourseUncheckedCreateNestedManyWithoutUserInput
-    course_pdfs?: CoursePdfUncheckedCreateNestedManyWithoutUserInput
+    course_resources?: CourseResourceUncheckedCreateNestedManyWithoutUserInput
     user_course_progress?: UserCourseProgressUncheckedCreateNestedManyWithoutUserInput
     user_chapter_progress?: UserChapterProgressUncheckedCreateNestedManyWithoutUserInput
     user_quiz_attempts?: UserQuizAttemptUncheckedCreateNestedManyWithoutUserInput
@@ -15922,7 +17112,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
     courses?: CourseUpdateManyWithoutUserNestedInput
-    course_pdfs?: CoursePdfUpdateManyWithoutUserNestedInput
+    course_resources?: CourseResourceUpdateManyWithoutUserNestedInput
     user_course_progress?: UserCourseProgressUpdateManyWithoutUserNestedInput
     user_chapter_progress?: UserChapterProgressUpdateManyWithoutUserNestedInput
     user_quiz_attempts?: UserQuizAttemptUpdateManyWithoutUserNestedInput
@@ -15938,7 +17128,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
     courses?: CourseUncheckedUpdateManyWithoutUserNestedInput
-    course_pdfs?: CoursePdfUncheckedUpdateManyWithoutUserNestedInput
+    course_resources?: CourseResourceUncheckedUpdateManyWithoutUserNestedInput
     user_course_progress?: UserCourseProgressUncheckedUpdateManyWithoutUserNestedInput
     user_chapter_progress?: UserChapterProgressUncheckedUpdateManyWithoutUserNestedInput
     user_quiz_attempts?: UserQuizAttemptUncheckedUpdateManyWithoutUserNestedInput
@@ -15984,7 +17174,7 @@ export namespace Prisma {
     updated_at?: Date | string
     user: UserCreateNestedOneWithoutCoursesInput
     chapters?: ChapterCreateNestedManyWithoutCourseInput
-    course_pdfs?: CoursePdfCreateNestedManyWithoutCourseInput
+    course_resources?: CourseResourceCreateNestedManyWithoutCourseInput
     user_course_progress?: UserCourseProgressCreateNestedManyWithoutCourseInput
   }
 
@@ -15997,7 +17187,7 @@ export namespace Prisma {
     completed_at?: Date | string | null
     updated_at?: Date | string
     chapters?: ChapterUncheckedCreateNestedManyWithoutCourseInput
-    course_pdfs?: CoursePdfUncheckedCreateNestedManyWithoutCourseInput
+    course_resources?: CourseResourceUncheckedCreateNestedManyWithoutCourseInput
     user_course_progress?: UserCourseProgressUncheckedCreateNestedManyWithoutCourseInput
   }
 
@@ -16010,7 +17200,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCoursesNestedInput
     chapters?: ChapterUpdateManyWithoutCourseNestedInput
-    course_pdfs?: CoursePdfUpdateManyWithoutCourseNestedInput
+    course_resources?: CourseResourceUpdateManyWithoutCourseNestedInput
     user_course_progress?: UserCourseProgressUpdateManyWithoutCourseNestedInput
   }
 
@@ -16023,7 +17213,7 @@ export namespace Prisma {
     completed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     chapters?: ChapterUncheckedUpdateManyWithoutCourseNestedInput
-    course_pdfs?: CoursePdfUncheckedUpdateManyWithoutCourseNestedInput
+    course_resources?: CourseResourceUncheckedUpdateManyWithoutCourseNestedInput
     user_course_progress?: UserCourseProgressUncheckedUpdateManyWithoutCourseNestedInput
   }
 
@@ -16749,63 +17939,122 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CoursePdfCreateInput = {
+  export type CourseResourceCreateInput = {
     id?: bigint | number
-    pdf_url: string
+    resource_url: string
     created_at?: Date | string
     updated_at?: Date | string
-    course: CourseCreateNestedOneWithoutCourse_pdfsInput
-    user: UserCreateNestedOneWithoutCourse_pdfsInput
+    course: CourseCreateNestedOneWithoutCourse_resourcesInput
+    user: UserCreateNestedOneWithoutCourse_resourcesInput
+    resource_type: ResourceTypeCreateNestedOneWithoutCourse_resourcesInput
   }
 
-  export type CoursePdfUncheckedCreateInput = {
+  export type CourseResourceUncheckedCreateInput = {
     id?: bigint | number
+    resource_type_id: bigint | number
     course_id: bigint | number
     user_id: bigint | number
-    pdf_url: string
+    resource_url: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
-  export type CoursePdfUpdateInput = {
+  export type CourseResourceUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    pdf_url?: StringFieldUpdateOperationsInput | string
+    resource_url?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    course?: CourseUpdateOneRequiredWithoutCourse_pdfsNestedInput
-    user?: UserUpdateOneRequiredWithoutCourse_pdfsNestedInput
+    course?: CourseUpdateOneRequiredWithoutCourse_resourcesNestedInput
+    user?: UserUpdateOneRequiredWithoutCourse_resourcesNestedInput
+    resource_type?: ResourceTypeUpdateOneRequiredWithoutCourse_resourcesNestedInput
   }
 
-  export type CoursePdfUncheckedUpdateInput = {
+  export type CourseResourceUncheckedUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
+    resource_type_id?: BigIntFieldUpdateOperationsInput | bigint | number
     course_id?: BigIntFieldUpdateOperationsInput | bigint | number
     user_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    pdf_url?: StringFieldUpdateOperationsInput | string
+    resource_url?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CoursePdfCreateManyInput = {
+  export type CourseResourceCreateManyInput = {
     id?: bigint | number
+    resource_type_id: bigint | number
     course_id: bigint | number
     user_id: bigint | number
-    pdf_url: string
+    resource_url: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
-  export type CoursePdfUpdateManyMutationInput = {
+  export type CourseResourceUpdateManyMutationInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    pdf_url?: StringFieldUpdateOperationsInput | string
+    resource_url?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CoursePdfUncheckedUpdateManyInput = {
+  export type CourseResourceUncheckedUpdateManyInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
+    resource_type_id?: BigIntFieldUpdateOperationsInput | bigint | number
     course_id?: BigIntFieldUpdateOperationsInput | bigint | number
     user_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    pdf_url?: StringFieldUpdateOperationsInput | string
+    resource_url?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ResourceTypeCreateInput = {
+    id?: bigint | number
+    extension: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    course_resources?: CourseResourceCreateNestedManyWithoutResource_typeInput
+  }
+
+  export type ResourceTypeUncheckedCreateInput = {
+    id?: bigint | number
+    extension: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    course_resources?: CourseResourceUncheckedCreateNestedManyWithoutResource_typeInput
+  }
+
+  export type ResourceTypeUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    extension?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    course_resources?: CourseResourceUpdateManyWithoutResource_typeNestedInput
+  }
+
+  export type ResourceTypeUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    extension?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    course_resources?: CourseResourceUncheckedUpdateManyWithoutResource_typeNestedInput
+  }
+
+  export type ResourceTypeCreateManyInput = {
+    id?: bigint | number
+    extension: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type ResourceTypeUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    extension?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ResourceTypeUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    extension?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -16858,10 +18107,10 @@ export namespace Prisma {
     none?: CourseWhereInput
   }
 
-  export type CoursePdfListRelationFilter = {
-    every?: CoursePdfWhereInput
-    some?: CoursePdfWhereInput
-    none?: CoursePdfWhereInput
+  export type CourseResourceListRelationFilter = {
+    every?: CourseResourceWhereInput
+    some?: CourseResourceWhereInput
+    none?: CourseResourceWhereInput
   }
 
   export type UserCourseProgressListRelationFilter = {
@@ -16892,7 +18141,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type CoursePdfOrderByRelationAggregateInput = {
+  export type CourseResourceOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -17721,49 +18970,94 @@ export namespace Prisma {
     points_awarded?: SortOrder
   }
 
-  export type CoursePdfOrderByRelevanceInput = {
-    fields: CoursePdfOrderByRelevanceFieldEnum | CoursePdfOrderByRelevanceFieldEnum[]
+  export type ResourceTypeScalarRelationFilter = {
+    is?: ResourceTypeWhereInput
+    isNot?: ResourceTypeWhereInput
+  }
+
+  export type CourseResourceOrderByRelevanceInput = {
+    fields: CourseResourceOrderByRelevanceFieldEnum | CourseResourceOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type CoursePdfCountOrderByAggregateInput = {
+  export type CourseResourceCountOrderByAggregateInput = {
     id?: SortOrder
+    resource_type_id?: SortOrder
     course_id?: SortOrder
     user_id?: SortOrder
-    pdf_url?: SortOrder
+    resource_url?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
-  export type CoursePdfAvgOrderByAggregateInput = {
+  export type CourseResourceAvgOrderByAggregateInput = {
     id?: SortOrder
+    resource_type_id?: SortOrder
     course_id?: SortOrder
     user_id?: SortOrder
   }
 
-  export type CoursePdfMaxOrderByAggregateInput = {
+  export type CourseResourceMaxOrderByAggregateInput = {
     id?: SortOrder
+    resource_type_id?: SortOrder
     course_id?: SortOrder
     user_id?: SortOrder
-    pdf_url?: SortOrder
+    resource_url?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
-  export type CoursePdfMinOrderByAggregateInput = {
+  export type CourseResourceMinOrderByAggregateInput = {
     id?: SortOrder
+    resource_type_id?: SortOrder
     course_id?: SortOrder
     user_id?: SortOrder
-    pdf_url?: SortOrder
+    resource_url?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
-  export type CoursePdfSumOrderByAggregateInput = {
+  export type CourseResourceSumOrderByAggregateInput = {
     id?: SortOrder
+    resource_type_id?: SortOrder
     course_id?: SortOrder
     user_id?: SortOrder
+  }
+
+  export type ResourceTypeOrderByRelevanceInput = {
+    fields: ResourceTypeOrderByRelevanceFieldEnum | ResourceTypeOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type ResourceTypeCountOrderByAggregateInput = {
+    id?: SortOrder
+    extension?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type ResourceTypeAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ResourceTypeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    extension?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type ResourceTypeMinOrderByAggregateInput = {
+    id?: SortOrder
+    extension?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type ResourceTypeSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type CourseCreateNestedManyWithoutUserInput = {
@@ -17773,11 +19067,11 @@ export namespace Prisma {
     connect?: CourseWhereUniqueInput | CourseWhereUniqueInput[]
   }
 
-  export type CoursePdfCreateNestedManyWithoutUserInput = {
-    create?: XOR<CoursePdfCreateWithoutUserInput, CoursePdfUncheckedCreateWithoutUserInput> | CoursePdfCreateWithoutUserInput[] | CoursePdfUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CoursePdfCreateOrConnectWithoutUserInput | CoursePdfCreateOrConnectWithoutUserInput[]
-    createMany?: CoursePdfCreateManyUserInputEnvelope
-    connect?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
+  export type CourseResourceCreateNestedManyWithoutUserInput = {
+    create?: XOR<CourseResourceCreateWithoutUserInput, CourseResourceUncheckedCreateWithoutUserInput> | CourseResourceCreateWithoutUserInput[] | CourseResourceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CourseResourceCreateOrConnectWithoutUserInput | CourseResourceCreateOrConnectWithoutUserInput[]
+    createMany?: CourseResourceCreateManyUserInputEnvelope
+    connect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
   }
 
   export type UserCourseProgressCreateNestedManyWithoutUserInput = {
@@ -17815,11 +19109,11 @@ export namespace Prisma {
     connect?: CourseWhereUniqueInput | CourseWhereUniqueInput[]
   }
 
-  export type CoursePdfUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<CoursePdfCreateWithoutUserInput, CoursePdfUncheckedCreateWithoutUserInput> | CoursePdfCreateWithoutUserInput[] | CoursePdfUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CoursePdfCreateOrConnectWithoutUserInput | CoursePdfCreateOrConnectWithoutUserInput[]
-    createMany?: CoursePdfCreateManyUserInputEnvelope
-    connect?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
+  export type CourseResourceUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<CourseResourceCreateWithoutUserInput, CourseResourceUncheckedCreateWithoutUserInput> | CourseResourceCreateWithoutUserInput[] | CourseResourceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CourseResourceCreateOrConnectWithoutUserInput | CourseResourceCreateOrConnectWithoutUserInput[]
+    createMany?: CourseResourceCreateManyUserInputEnvelope
+    connect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
   }
 
   export type UserCourseProgressUncheckedCreateNestedManyWithoutUserInput = {
@@ -17884,18 +19178,18 @@ export namespace Prisma {
     deleteMany?: CourseScalarWhereInput | CourseScalarWhereInput[]
   }
 
-  export type CoursePdfUpdateManyWithoutUserNestedInput = {
-    create?: XOR<CoursePdfCreateWithoutUserInput, CoursePdfUncheckedCreateWithoutUserInput> | CoursePdfCreateWithoutUserInput[] | CoursePdfUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CoursePdfCreateOrConnectWithoutUserInput | CoursePdfCreateOrConnectWithoutUserInput[]
-    upsert?: CoursePdfUpsertWithWhereUniqueWithoutUserInput | CoursePdfUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: CoursePdfCreateManyUserInputEnvelope
-    set?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
-    disconnect?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
-    delete?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
-    connect?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
-    update?: CoursePdfUpdateWithWhereUniqueWithoutUserInput | CoursePdfUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: CoursePdfUpdateManyWithWhereWithoutUserInput | CoursePdfUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: CoursePdfScalarWhereInput | CoursePdfScalarWhereInput[]
+  export type CourseResourceUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CourseResourceCreateWithoutUserInput, CourseResourceUncheckedCreateWithoutUserInput> | CourseResourceCreateWithoutUserInput[] | CourseResourceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CourseResourceCreateOrConnectWithoutUserInput | CourseResourceCreateOrConnectWithoutUserInput[]
+    upsert?: CourseResourceUpsertWithWhereUniqueWithoutUserInput | CourseResourceUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CourseResourceCreateManyUserInputEnvelope
+    set?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    disconnect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    delete?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    connect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    update?: CourseResourceUpdateWithWhereUniqueWithoutUserInput | CourseResourceUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CourseResourceUpdateManyWithWhereWithoutUserInput | CourseResourceUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CourseResourceScalarWhereInput | CourseResourceScalarWhereInput[]
   }
 
   export type UserCourseProgressUpdateManyWithoutUserNestedInput = {
@@ -17968,18 +19262,18 @@ export namespace Prisma {
     deleteMany?: CourseScalarWhereInput | CourseScalarWhereInput[]
   }
 
-  export type CoursePdfUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<CoursePdfCreateWithoutUserInput, CoursePdfUncheckedCreateWithoutUserInput> | CoursePdfCreateWithoutUserInput[] | CoursePdfUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CoursePdfCreateOrConnectWithoutUserInput | CoursePdfCreateOrConnectWithoutUserInput[]
-    upsert?: CoursePdfUpsertWithWhereUniqueWithoutUserInput | CoursePdfUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: CoursePdfCreateManyUserInputEnvelope
-    set?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
-    disconnect?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
-    delete?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
-    connect?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
-    update?: CoursePdfUpdateWithWhereUniqueWithoutUserInput | CoursePdfUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: CoursePdfUpdateManyWithWhereWithoutUserInput | CoursePdfUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: CoursePdfScalarWhereInput | CoursePdfScalarWhereInput[]
+  export type CourseResourceUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CourseResourceCreateWithoutUserInput, CourseResourceUncheckedCreateWithoutUserInput> | CourseResourceCreateWithoutUserInput[] | CourseResourceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CourseResourceCreateOrConnectWithoutUserInput | CourseResourceCreateOrConnectWithoutUserInput[]
+    upsert?: CourseResourceUpsertWithWhereUniqueWithoutUserInput | CourseResourceUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CourseResourceCreateManyUserInputEnvelope
+    set?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    disconnect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    delete?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    connect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    update?: CourseResourceUpdateWithWhereUniqueWithoutUserInput | CourseResourceUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CourseResourceUpdateManyWithWhereWithoutUserInput | CourseResourceUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CourseResourceScalarWhereInput | CourseResourceScalarWhereInput[]
   }
 
   export type UserCourseProgressUncheckedUpdateManyWithoutUserNestedInput = {
@@ -18051,11 +19345,11 @@ export namespace Prisma {
     connect?: ChapterWhereUniqueInput | ChapterWhereUniqueInput[]
   }
 
-  export type CoursePdfCreateNestedManyWithoutCourseInput = {
-    create?: XOR<CoursePdfCreateWithoutCourseInput, CoursePdfUncheckedCreateWithoutCourseInput> | CoursePdfCreateWithoutCourseInput[] | CoursePdfUncheckedCreateWithoutCourseInput[]
-    connectOrCreate?: CoursePdfCreateOrConnectWithoutCourseInput | CoursePdfCreateOrConnectWithoutCourseInput[]
-    createMany?: CoursePdfCreateManyCourseInputEnvelope
-    connect?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
+  export type CourseResourceCreateNestedManyWithoutCourseInput = {
+    create?: XOR<CourseResourceCreateWithoutCourseInput, CourseResourceUncheckedCreateWithoutCourseInput> | CourseResourceCreateWithoutCourseInput[] | CourseResourceUncheckedCreateWithoutCourseInput[]
+    connectOrCreate?: CourseResourceCreateOrConnectWithoutCourseInput | CourseResourceCreateOrConnectWithoutCourseInput[]
+    createMany?: CourseResourceCreateManyCourseInputEnvelope
+    connect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
   }
 
   export type UserCourseProgressCreateNestedManyWithoutCourseInput = {
@@ -18072,11 +19366,11 @@ export namespace Prisma {
     connect?: ChapterWhereUniqueInput | ChapterWhereUniqueInput[]
   }
 
-  export type CoursePdfUncheckedCreateNestedManyWithoutCourseInput = {
-    create?: XOR<CoursePdfCreateWithoutCourseInput, CoursePdfUncheckedCreateWithoutCourseInput> | CoursePdfCreateWithoutCourseInput[] | CoursePdfUncheckedCreateWithoutCourseInput[]
-    connectOrCreate?: CoursePdfCreateOrConnectWithoutCourseInput | CoursePdfCreateOrConnectWithoutCourseInput[]
-    createMany?: CoursePdfCreateManyCourseInputEnvelope
-    connect?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
+  export type CourseResourceUncheckedCreateNestedManyWithoutCourseInput = {
+    create?: XOR<CourseResourceCreateWithoutCourseInput, CourseResourceUncheckedCreateWithoutCourseInput> | CourseResourceCreateWithoutCourseInput[] | CourseResourceUncheckedCreateWithoutCourseInput[]
+    connectOrCreate?: CourseResourceCreateOrConnectWithoutCourseInput | CourseResourceCreateOrConnectWithoutCourseInput[]
+    createMany?: CourseResourceCreateManyCourseInputEnvelope
+    connect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
   }
 
   export type UserCourseProgressUncheckedCreateNestedManyWithoutCourseInput = {
@@ -18112,18 +19406,18 @@ export namespace Prisma {
     deleteMany?: ChapterScalarWhereInput | ChapterScalarWhereInput[]
   }
 
-  export type CoursePdfUpdateManyWithoutCourseNestedInput = {
-    create?: XOR<CoursePdfCreateWithoutCourseInput, CoursePdfUncheckedCreateWithoutCourseInput> | CoursePdfCreateWithoutCourseInput[] | CoursePdfUncheckedCreateWithoutCourseInput[]
-    connectOrCreate?: CoursePdfCreateOrConnectWithoutCourseInput | CoursePdfCreateOrConnectWithoutCourseInput[]
-    upsert?: CoursePdfUpsertWithWhereUniqueWithoutCourseInput | CoursePdfUpsertWithWhereUniqueWithoutCourseInput[]
-    createMany?: CoursePdfCreateManyCourseInputEnvelope
-    set?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
-    disconnect?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
-    delete?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
-    connect?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
-    update?: CoursePdfUpdateWithWhereUniqueWithoutCourseInput | CoursePdfUpdateWithWhereUniqueWithoutCourseInput[]
-    updateMany?: CoursePdfUpdateManyWithWhereWithoutCourseInput | CoursePdfUpdateManyWithWhereWithoutCourseInput[]
-    deleteMany?: CoursePdfScalarWhereInput | CoursePdfScalarWhereInput[]
+  export type CourseResourceUpdateManyWithoutCourseNestedInput = {
+    create?: XOR<CourseResourceCreateWithoutCourseInput, CourseResourceUncheckedCreateWithoutCourseInput> | CourseResourceCreateWithoutCourseInput[] | CourseResourceUncheckedCreateWithoutCourseInput[]
+    connectOrCreate?: CourseResourceCreateOrConnectWithoutCourseInput | CourseResourceCreateOrConnectWithoutCourseInput[]
+    upsert?: CourseResourceUpsertWithWhereUniqueWithoutCourseInput | CourseResourceUpsertWithWhereUniqueWithoutCourseInput[]
+    createMany?: CourseResourceCreateManyCourseInputEnvelope
+    set?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    disconnect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    delete?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    connect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    update?: CourseResourceUpdateWithWhereUniqueWithoutCourseInput | CourseResourceUpdateWithWhereUniqueWithoutCourseInput[]
+    updateMany?: CourseResourceUpdateManyWithWhereWithoutCourseInput | CourseResourceUpdateManyWithWhereWithoutCourseInput[]
+    deleteMany?: CourseResourceScalarWhereInput | CourseResourceScalarWhereInput[]
   }
 
   export type UserCourseProgressUpdateManyWithoutCourseNestedInput = {
@@ -18154,18 +19448,18 @@ export namespace Prisma {
     deleteMany?: ChapterScalarWhereInput | ChapterScalarWhereInput[]
   }
 
-  export type CoursePdfUncheckedUpdateManyWithoutCourseNestedInput = {
-    create?: XOR<CoursePdfCreateWithoutCourseInput, CoursePdfUncheckedCreateWithoutCourseInput> | CoursePdfCreateWithoutCourseInput[] | CoursePdfUncheckedCreateWithoutCourseInput[]
-    connectOrCreate?: CoursePdfCreateOrConnectWithoutCourseInput | CoursePdfCreateOrConnectWithoutCourseInput[]
-    upsert?: CoursePdfUpsertWithWhereUniqueWithoutCourseInput | CoursePdfUpsertWithWhereUniqueWithoutCourseInput[]
-    createMany?: CoursePdfCreateManyCourseInputEnvelope
-    set?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
-    disconnect?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
-    delete?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
-    connect?: CoursePdfWhereUniqueInput | CoursePdfWhereUniqueInput[]
-    update?: CoursePdfUpdateWithWhereUniqueWithoutCourseInput | CoursePdfUpdateWithWhereUniqueWithoutCourseInput[]
-    updateMany?: CoursePdfUpdateManyWithWhereWithoutCourseInput | CoursePdfUpdateManyWithWhereWithoutCourseInput[]
-    deleteMany?: CoursePdfScalarWhereInput | CoursePdfScalarWhereInput[]
+  export type CourseResourceUncheckedUpdateManyWithoutCourseNestedInput = {
+    create?: XOR<CourseResourceCreateWithoutCourseInput, CourseResourceUncheckedCreateWithoutCourseInput> | CourseResourceCreateWithoutCourseInput[] | CourseResourceUncheckedCreateWithoutCourseInput[]
+    connectOrCreate?: CourseResourceCreateOrConnectWithoutCourseInput | CourseResourceCreateOrConnectWithoutCourseInput[]
+    upsert?: CourseResourceUpsertWithWhereUniqueWithoutCourseInput | CourseResourceUpsertWithWhereUniqueWithoutCourseInput[]
+    createMany?: CourseResourceCreateManyCourseInputEnvelope
+    set?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    disconnect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    delete?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    connect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    update?: CourseResourceUpdateWithWhereUniqueWithoutCourseInput | CourseResourceUpdateWithWhereUniqueWithoutCourseInput[]
+    updateMany?: CourseResourceUpdateManyWithWhereWithoutCourseInput | CourseResourceUpdateManyWithWhereWithoutCourseInput[]
+    deleteMany?: CourseResourceScalarWhereInput | CourseResourceScalarWhereInput[]
   }
 
   export type UserCourseProgressUncheckedUpdateManyWithoutCourseNestedInput = {
@@ -18796,32 +20090,88 @@ export namespace Prisma {
     update?: XOR<XOR<OptionUpdateToOneWithWhereWithoutUser_responsesInput, OptionUpdateWithoutUser_responsesInput>, OptionUncheckedUpdateWithoutUser_responsesInput>
   }
 
-  export type CourseCreateNestedOneWithoutCourse_pdfsInput = {
-    create?: XOR<CourseCreateWithoutCourse_pdfsInput, CourseUncheckedCreateWithoutCourse_pdfsInput>
-    connectOrCreate?: CourseCreateOrConnectWithoutCourse_pdfsInput
+  export type CourseCreateNestedOneWithoutCourse_resourcesInput = {
+    create?: XOR<CourseCreateWithoutCourse_resourcesInput, CourseUncheckedCreateWithoutCourse_resourcesInput>
+    connectOrCreate?: CourseCreateOrConnectWithoutCourse_resourcesInput
     connect?: CourseWhereUniqueInput
   }
 
-  export type UserCreateNestedOneWithoutCourse_pdfsInput = {
-    create?: XOR<UserCreateWithoutCourse_pdfsInput, UserUncheckedCreateWithoutCourse_pdfsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCourse_pdfsInput
+  export type UserCreateNestedOneWithoutCourse_resourcesInput = {
+    create?: XOR<UserCreateWithoutCourse_resourcesInput, UserUncheckedCreateWithoutCourse_resourcesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCourse_resourcesInput
     connect?: UserWhereUniqueInput
   }
 
-  export type CourseUpdateOneRequiredWithoutCourse_pdfsNestedInput = {
-    create?: XOR<CourseCreateWithoutCourse_pdfsInput, CourseUncheckedCreateWithoutCourse_pdfsInput>
-    connectOrCreate?: CourseCreateOrConnectWithoutCourse_pdfsInput
-    upsert?: CourseUpsertWithoutCourse_pdfsInput
+  export type ResourceTypeCreateNestedOneWithoutCourse_resourcesInput = {
+    create?: XOR<ResourceTypeCreateWithoutCourse_resourcesInput, ResourceTypeUncheckedCreateWithoutCourse_resourcesInput>
+    connectOrCreate?: ResourceTypeCreateOrConnectWithoutCourse_resourcesInput
+    connect?: ResourceTypeWhereUniqueInput
+  }
+
+  export type CourseUpdateOneRequiredWithoutCourse_resourcesNestedInput = {
+    create?: XOR<CourseCreateWithoutCourse_resourcesInput, CourseUncheckedCreateWithoutCourse_resourcesInput>
+    connectOrCreate?: CourseCreateOrConnectWithoutCourse_resourcesInput
+    upsert?: CourseUpsertWithoutCourse_resourcesInput
     connect?: CourseWhereUniqueInput
-    update?: XOR<XOR<CourseUpdateToOneWithWhereWithoutCourse_pdfsInput, CourseUpdateWithoutCourse_pdfsInput>, CourseUncheckedUpdateWithoutCourse_pdfsInput>
+    update?: XOR<XOR<CourseUpdateToOneWithWhereWithoutCourse_resourcesInput, CourseUpdateWithoutCourse_resourcesInput>, CourseUncheckedUpdateWithoutCourse_resourcesInput>
   }
 
-  export type UserUpdateOneRequiredWithoutCourse_pdfsNestedInput = {
-    create?: XOR<UserCreateWithoutCourse_pdfsInput, UserUncheckedCreateWithoutCourse_pdfsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCourse_pdfsInput
-    upsert?: UserUpsertWithoutCourse_pdfsInput
+  export type UserUpdateOneRequiredWithoutCourse_resourcesNestedInput = {
+    create?: XOR<UserCreateWithoutCourse_resourcesInput, UserUncheckedCreateWithoutCourse_resourcesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCourse_resourcesInput
+    upsert?: UserUpsertWithoutCourse_resourcesInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCourse_pdfsInput, UserUpdateWithoutCourse_pdfsInput>, UserUncheckedUpdateWithoutCourse_pdfsInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCourse_resourcesInput, UserUpdateWithoutCourse_resourcesInput>, UserUncheckedUpdateWithoutCourse_resourcesInput>
+  }
+
+  export type ResourceTypeUpdateOneRequiredWithoutCourse_resourcesNestedInput = {
+    create?: XOR<ResourceTypeCreateWithoutCourse_resourcesInput, ResourceTypeUncheckedCreateWithoutCourse_resourcesInput>
+    connectOrCreate?: ResourceTypeCreateOrConnectWithoutCourse_resourcesInput
+    upsert?: ResourceTypeUpsertWithoutCourse_resourcesInput
+    connect?: ResourceTypeWhereUniqueInput
+    update?: XOR<XOR<ResourceTypeUpdateToOneWithWhereWithoutCourse_resourcesInput, ResourceTypeUpdateWithoutCourse_resourcesInput>, ResourceTypeUncheckedUpdateWithoutCourse_resourcesInput>
+  }
+
+  export type CourseResourceCreateNestedManyWithoutResource_typeInput = {
+    create?: XOR<CourseResourceCreateWithoutResource_typeInput, CourseResourceUncheckedCreateWithoutResource_typeInput> | CourseResourceCreateWithoutResource_typeInput[] | CourseResourceUncheckedCreateWithoutResource_typeInput[]
+    connectOrCreate?: CourseResourceCreateOrConnectWithoutResource_typeInput | CourseResourceCreateOrConnectWithoutResource_typeInput[]
+    createMany?: CourseResourceCreateManyResource_typeInputEnvelope
+    connect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+  }
+
+  export type CourseResourceUncheckedCreateNestedManyWithoutResource_typeInput = {
+    create?: XOR<CourseResourceCreateWithoutResource_typeInput, CourseResourceUncheckedCreateWithoutResource_typeInput> | CourseResourceCreateWithoutResource_typeInput[] | CourseResourceUncheckedCreateWithoutResource_typeInput[]
+    connectOrCreate?: CourseResourceCreateOrConnectWithoutResource_typeInput | CourseResourceCreateOrConnectWithoutResource_typeInput[]
+    createMany?: CourseResourceCreateManyResource_typeInputEnvelope
+    connect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+  }
+
+  export type CourseResourceUpdateManyWithoutResource_typeNestedInput = {
+    create?: XOR<CourseResourceCreateWithoutResource_typeInput, CourseResourceUncheckedCreateWithoutResource_typeInput> | CourseResourceCreateWithoutResource_typeInput[] | CourseResourceUncheckedCreateWithoutResource_typeInput[]
+    connectOrCreate?: CourseResourceCreateOrConnectWithoutResource_typeInput | CourseResourceCreateOrConnectWithoutResource_typeInput[]
+    upsert?: CourseResourceUpsertWithWhereUniqueWithoutResource_typeInput | CourseResourceUpsertWithWhereUniqueWithoutResource_typeInput[]
+    createMany?: CourseResourceCreateManyResource_typeInputEnvelope
+    set?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    disconnect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    delete?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    connect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    update?: CourseResourceUpdateWithWhereUniqueWithoutResource_typeInput | CourseResourceUpdateWithWhereUniqueWithoutResource_typeInput[]
+    updateMany?: CourseResourceUpdateManyWithWhereWithoutResource_typeInput | CourseResourceUpdateManyWithWhereWithoutResource_typeInput[]
+    deleteMany?: CourseResourceScalarWhereInput | CourseResourceScalarWhereInput[]
+  }
+
+  export type CourseResourceUncheckedUpdateManyWithoutResource_typeNestedInput = {
+    create?: XOR<CourseResourceCreateWithoutResource_typeInput, CourseResourceUncheckedCreateWithoutResource_typeInput> | CourseResourceCreateWithoutResource_typeInput[] | CourseResourceUncheckedCreateWithoutResource_typeInput[]
+    connectOrCreate?: CourseResourceCreateOrConnectWithoutResource_typeInput | CourseResourceCreateOrConnectWithoutResource_typeInput[]
+    upsert?: CourseResourceUpsertWithWhereUniqueWithoutResource_typeInput | CourseResourceUpsertWithWhereUniqueWithoutResource_typeInput[]
+    createMany?: CourseResourceCreateManyResource_typeInputEnvelope
+    set?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    disconnect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    delete?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    connect?: CourseResourceWhereUniqueInput | CourseResourceWhereUniqueInput[]
+    update?: CourseResourceUpdateWithWhereUniqueWithoutResource_typeInput | CourseResourceUpdateWithWhereUniqueWithoutResource_typeInput[]
+    updateMany?: CourseResourceUpdateManyWithWhereWithoutResource_typeInput | CourseResourceUpdateManyWithWhereWithoutResource_typeInput[]
+    deleteMany?: CourseResourceScalarWhereInput | CourseResourceScalarWhereInput[]
   }
 
   export type NestedBigIntFilter<$PrismaModel = never> = {
@@ -19092,7 +20442,7 @@ export namespace Prisma {
     completed_at?: Date | string | null
     updated_at?: Date | string
     chapters?: ChapterCreateNestedManyWithoutCourseInput
-    course_pdfs?: CoursePdfCreateNestedManyWithoutCourseInput
+    course_resources?: CourseResourceCreateNestedManyWithoutCourseInput
     user_course_progress?: UserCourseProgressCreateNestedManyWithoutCourseInput
   }
 
@@ -19104,7 +20454,7 @@ export namespace Prisma {
     completed_at?: Date | string | null
     updated_at?: Date | string
     chapters?: ChapterUncheckedCreateNestedManyWithoutCourseInput
-    course_pdfs?: CoursePdfUncheckedCreateNestedManyWithoutCourseInput
+    course_resources?: CourseResourceUncheckedCreateNestedManyWithoutCourseInput
     user_course_progress?: UserCourseProgressUncheckedCreateNestedManyWithoutCourseInput
   }
 
@@ -19118,29 +20468,31 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type CoursePdfCreateWithoutUserInput = {
+  export type CourseResourceCreateWithoutUserInput = {
     id?: bigint | number
-    pdf_url: string
+    resource_url: string
     created_at?: Date | string
     updated_at?: Date | string
-    course: CourseCreateNestedOneWithoutCourse_pdfsInput
+    course: CourseCreateNestedOneWithoutCourse_resourcesInput
+    resource_type: ResourceTypeCreateNestedOneWithoutCourse_resourcesInput
   }
 
-  export type CoursePdfUncheckedCreateWithoutUserInput = {
+  export type CourseResourceUncheckedCreateWithoutUserInput = {
     id?: bigint | number
+    resource_type_id: bigint | number
     course_id: bigint | number
-    pdf_url: string
+    resource_url: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
-  export type CoursePdfCreateOrConnectWithoutUserInput = {
-    where: CoursePdfWhereUniqueInput
-    create: XOR<CoursePdfCreateWithoutUserInput, CoursePdfUncheckedCreateWithoutUserInput>
+  export type CourseResourceCreateOrConnectWithoutUserInput = {
+    where: CourseResourceWhereUniqueInput
+    create: XOR<CourseResourceCreateWithoutUserInput, CourseResourceUncheckedCreateWithoutUserInput>
   }
 
-  export type CoursePdfCreateManyUserInputEnvelope = {
-    data: CoursePdfCreateManyUserInput | CoursePdfCreateManyUserInput[]
+  export type CourseResourceCreateManyUserInputEnvelope = {
+    data: CourseResourceCreateManyUserInput | CourseResourceCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -19301,32 +20653,33 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"Course"> | Date | string
   }
 
-  export type CoursePdfUpsertWithWhereUniqueWithoutUserInput = {
-    where: CoursePdfWhereUniqueInput
-    update: XOR<CoursePdfUpdateWithoutUserInput, CoursePdfUncheckedUpdateWithoutUserInput>
-    create: XOR<CoursePdfCreateWithoutUserInput, CoursePdfUncheckedCreateWithoutUserInput>
+  export type CourseResourceUpsertWithWhereUniqueWithoutUserInput = {
+    where: CourseResourceWhereUniqueInput
+    update: XOR<CourseResourceUpdateWithoutUserInput, CourseResourceUncheckedUpdateWithoutUserInput>
+    create: XOR<CourseResourceCreateWithoutUserInput, CourseResourceUncheckedCreateWithoutUserInput>
   }
 
-  export type CoursePdfUpdateWithWhereUniqueWithoutUserInput = {
-    where: CoursePdfWhereUniqueInput
-    data: XOR<CoursePdfUpdateWithoutUserInput, CoursePdfUncheckedUpdateWithoutUserInput>
+  export type CourseResourceUpdateWithWhereUniqueWithoutUserInput = {
+    where: CourseResourceWhereUniqueInput
+    data: XOR<CourseResourceUpdateWithoutUserInput, CourseResourceUncheckedUpdateWithoutUserInput>
   }
 
-  export type CoursePdfUpdateManyWithWhereWithoutUserInput = {
-    where: CoursePdfScalarWhereInput
-    data: XOR<CoursePdfUpdateManyMutationInput, CoursePdfUncheckedUpdateManyWithoutUserInput>
+  export type CourseResourceUpdateManyWithWhereWithoutUserInput = {
+    where: CourseResourceScalarWhereInput
+    data: XOR<CourseResourceUpdateManyMutationInput, CourseResourceUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type CoursePdfScalarWhereInput = {
-    AND?: CoursePdfScalarWhereInput | CoursePdfScalarWhereInput[]
-    OR?: CoursePdfScalarWhereInput[]
-    NOT?: CoursePdfScalarWhereInput | CoursePdfScalarWhereInput[]
-    id?: BigIntFilter<"CoursePdf"> | bigint | number
-    course_id?: BigIntFilter<"CoursePdf"> | bigint | number
-    user_id?: BigIntFilter<"CoursePdf"> | bigint | number
-    pdf_url?: StringFilter<"CoursePdf"> | string
-    created_at?: DateTimeFilter<"CoursePdf"> | Date | string
-    updated_at?: DateTimeFilter<"CoursePdf"> | Date | string
+  export type CourseResourceScalarWhereInput = {
+    AND?: CourseResourceScalarWhereInput | CourseResourceScalarWhereInput[]
+    OR?: CourseResourceScalarWhereInput[]
+    NOT?: CourseResourceScalarWhereInput | CourseResourceScalarWhereInput[]
+    id?: BigIntFilter<"CourseResource"> | bigint | number
+    resource_type_id?: BigIntFilter<"CourseResource"> | bigint | number
+    course_id?: BigIntFilter<"CourseResource"> | bigint | number
+    user_id?: BigIntFilter<"CourseResource"> | bigint | number
+    resource_url?: StringFilter<"CourseResource"> | string
+    created_at?: DateTimeFilter<"CourseResource"> | Date | string
+    updated_at?: DateTimeFilter<"CourseResource"> | Date | string
   }
 
   export type UserCourseProgressUpsertWithWhereUniqueWithoutUserInput = {
@@ -19460,7 +20813,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     deleted?: boolean
-    course_pdfs?: CoursePdfCreateNestedManyWithoutUserInput
+    course_resources?: CourseResourceCreateNestedManyWithoutUserInput
     user_course_progress?: UserCourseProgressCreateNestedManyWithoutUserInput
     user_chapter_progress?: UserChapterProgressCreateNestedManyWithoutUserInput
     user_quiz_attempts?: UserQuizAttemptCreateNestedManyWithoutUserInput
@@ -19475,7 +20828,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     deleted?: boolean
-    course_pdfs?: CoursePdfUncheckedCreateNestedManyWithoutUserInput
+    course_resources?: CourseResourceUncheckedCreateNestedManyWithoutUserInput
     user_course_progress?: UserCourseProgressUncheckedCreateNestedManyWithoutUserInput
     user_chapter_progress?: UserChapterProgressUncheckedCreateNestedManyWithoutUserInput
     user_quiz_attempts?: UserQuizAttemptUncheckedCreateNestedManyWithoutUserInput
@@ -19519,29 +20872,31 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type CoursePdfCreateWithoutCourseInput = {
+  export type CourseResourceCreateWithoutCourseInput = {
     id?: bigint | number
-    pdf_url: string
+    resource_url: string
     created_at?: Date | string
     updated_at?: Date | string
-    user: UserCreateNestedOneWithoutCourse_pdfsInput
+    user: UserCreateNestedOneWithoutCourse_resourcesInput
+    resource_type: ResourceTypeCreateNestedOneWithoutCourse_resourcesInput
   }
 
-  export type CoursePdfUncheckedCreateWithoutCourseInput = {
+  export type CourseResourceUncheckedCreateWithoutCourseInput = {
     id?: bigint | number
+    resource_type_id: bigint | number
     user_id: bigint | number
-    pdf_url: string
+    resource_url: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
-  export type CoursePdfCreateOrConnectWithoutCourseInput = {
-    where: CoursePdfWhereUniqueInput
-    create: XOR<CoursePdfCreateWithoutCourseInput, CoursePdfUncheckedCreateWithoutCourseInput>
+  export type CourseResourceCreateOrConnectWithoutCourseInput = {
+    where: CourseResourceWhereUniqueInput
+    create: XOR<CourseResourceCreateWithoutCourseInput, CourseResourceUncheckedCreateWithoutCourseInput>
   }
 
-  export type CoursePdfCreateManyCourseInputEnvelope = {
-    data: CoursePdfCreateManyCourseInput | CoursePdfCreateManyCourseInput[]
+  export type CourseResourceCreateManyCourseInputEnvelope = {
+    data: CourseResourceCreateManyCourseInput | CourseResourceCreateManyCourseInput[]
     skipDuplicates?: boolean
   }
 
@@ -19596,7 +20951,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
-    course_pdfs?: CoursePdfUpdateManyWithoutUserNestedInput
+    course_resources?: CourseResourceUpdateManyWithoutUserNestedInput
     user_course_progress?: UserCourseProgressUpdateManyWithoutUserNestedInput
     user_chapter_progress?: UserChapterProgressUpdateManyWithoutUserNestedInput
     user_quiz_attempts?: UserQuizAttemptUpdateManyWithoutUserNestedInput
@@ -19611,7 +20966,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
-    course_pdfs?: CoursePdfUncheckedUpdateManyWithoutUserNestedInput
+    course_resources?: CourseResourceUncheckedUpdateManyWithoutUserNestedInput
     user_course_progress?: UserCourseProgressUncheckedUpdateManyWithoutUserNestedInput
     user_chapter_progress?: UserChapterProgressUncheckedUpdateManyWithoutUserNestedInput
     user_quiz_attempts?: UserQuizAttemptUncheckedUpdateManyWithoutUserNestedInput
@@ -19647,20 +21002,20 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"Chapter"> | Date | string
   }
 
-  export type CoursePdfUpsertWithWhereUniqueWithoutCourseInput = {
-    where: CoursePdfWhereUniqueInput
-    update: XOR<CoursePdfUpdateWithoutCourseInput, CoursePdfUncheckedUpdateWithoutCourseInput>
-    create: XOR<CoursePdfCreateWithoutCourseInput, CoursePdfUncheckedCreateWithoutCourseInput>
+  export type CourseResourceUpsertWithWhereUniqueWithoutCourseInput = {
+    where: CourseResourceWhereUniqueInput
+    update: XOR<CourseResourceUpdateWithoutCourseInput, CourseResourceUncheckedUpdateWithoutCourseInput>
+    create: XOR<CourseResourceCreateWithoutCourseInput, CourseResourceUncheckedCreateWithoutCourseInput>
   }
 
-  export type CoursePdfUpdateWithWhereUniqueWithoutCourseInput = {
-    where: CoursePdfWhereUniqueInput
-    data: XOR<CoursePdfUpdateWithoutCourseInput, CoursePdfUncheckedUpdateWithoutCourseInput>
+  export type CourseResourceUpdateWithWhereUniqueWithoutCourseInput = {
+    where: CourseResourceWhereUniqueInput
+    data: XOR<CourseResourceUpdateWithoutCourseInput, CourseResourceUncheckedUpdateWithoutCourseInput>
   }
 
-  export type CoursePdfUpdateManyWithWhereWithoutCourseInput = {
-    where: CoursePdfScalarWhereInput
-    data: XOR<CoursePdfUpdateManyMutationInput, CoursePdfUncheckedUpdateManyWithoutCourseInput>
+  export type CourseResourceUpdateManyWithWhereWithoutCourseInput = {
+    where: CourseResourceScalarWhereInput
+    data: XOR<CourseResourceUpdateManyMutationInput, CourseResourceUncheckedUpdateManyWithoutCourseInput>
   }
 
   export type UserCourseProgressUpsertWithWhereUniqueWithoutCourseInput = {
@@ -19687,7 +21042,7 @@ export namespace Prisma {
     completed_at?: Date | string | null
     updated_at?: Date | string
     user: UserCreateNestedOneWithoutCoursesInput
-    course_pdfs?: CoursePdfCreateNestedManyWithoutCourseInput
+    course_resources?: CourseResourceCreateNestedManyWithoutCourseInput
     user_course_progress?: UserCourseProgressCreateNestedManyWithoutCourseInput
   }
 
@@ -19699,7 +21054,7 @@ export namespace Prisma {
     created_at?: Date | string
     completed_at?: Date | string | null
     updated_at?: Date | string
-    course_pdfs?: CoursePdfUncheckedCreateNestedManyWithoutCourseInput
+    course_resources?: CourseResourceUncheckedCreateNestedManyWithoutCourseInput
     user_course_progress?: UserCourseProgressUncheckedCreateNestedManyWithoutCourseInput
   }
 
@@ -19787,7 +21142,7 @@ export namespace Prisma {
     completed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCoursesNestedInput
-    course_pdfs?: CoursePdfUpdateManyWithoutCourseNestedInput
+    course_resources?: CourseResourceUpdateManyWithoutCourseNestedInput
     user_course_progress?: UserCourseProgressUpdateManyWithoutCourseNestedInput
   }
 
@@ -19799,7 +21154,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     completed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    course_pdfs?: CoursePdfUncheckedUpdateManyWithoutCourseNestedInput
+    course_resources?: CourseResourceUncheckedUpdateManyWithoutCourseNestedInput
     user_course_progress?: UserCourseProgressUncheckedUpdateManyWithoutCourseNestedInput
   }
 
@@ -20437,7 +21792,7 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted?: boolean
     courses?: CourseCreateNestedManyWithoutUserInput
-    course_pdfs?: CoursePdfCreateNestedManyWithoutUserInput
+    course_resources?: CourseResourceCreateNestedManyWithoutUserInput
     user_chapter_progress?: UserChapterProgressCreateNestedManyWithoutUserInput
     user_quiz_attempts?: UserQuizAttemptCreateNestedManyWithoutUserInput
     user_responses?: UserResponseCreateNestedManyWithoutUserInput
@@ -20452,7 +21807,7 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted?: boolean
     courses?: CourseUncheckedCreateNestedManyWithoutUserInput
-    course_pdfs?: CoursePdfUncheckedCreateNestedManyWithoutUserInput
+    course_resources?: CourseResourceUncheckedCreateNestedManyWithoutUserInput
     user_chapter_progress?: UserChapterProgressUncheckedCreateNestedManyWithoutUserInput
     user_quiz_attempts?: UserQuizAttemptUncheckedCreateNestedManyWithoutUserInput
     user_responses?: UserResponseUncheckedCreateNestedManyWithoutUserInput
@@ -20472,7 +21827,7 @@ export namespace Prisma {
     updated_at?: Date | string
     user: UserCreateNestedOneWithoutCoursesInput
     chapters?: ChapterCreateNestedManyWithoutCourseInput
-    course_pdfs?: CoursePdfCreateNestedManyWithoutCourseInput
+    course_resources?: CourseResourceCreateNestedManyWithoutCourseInput
   }
 
   export type CourseUncheckedCreateWithoutUser_course_progressInput = {
@@ -20484,7 +21839,7 @@ export namespace Prisma {
     completed_at?: Date | string | null
     updated_at?: Date | string
     chapters?: ChapterUncheckedCreateNestedManyWithoutCourseInput
-    course_pdfs?: CoursePdfUncheckedCreateNestedManyWithoutCourseInput
+    course_resources?: CourseResourceUncheckedCreateNestedManyWithoutCourseInput
   }
 
   export type CourseCreateOrConnectWithoutUser_course_progressInput = {
@@ -20512,7 +21867,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
     courses?: CourseUpdateManyWithoutUserNestedInput
-    course_pdfs?: CoursePdfUpdateManyWithoutUserNestedInput
+    course_resources?: CourseResourceUpdateManyWithoutUserNestedInput
     user_chapter_progress?: UserChapterProgressUpdateManyWithoutUserNestedInput
     user_quiz_attempts?: UserQuizAttemptUpdateManyWithoutUserNestedInput
     user_responses?: UserResponseUpdateManyWithoutUserNestedInput
@@ -20527,7 +21882,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
     courses?: CourseUncheckedUpdateManyWithoutUserNestedInput
-    course_pdfs?: CoursePdfUncheckedUpdateManyWithoutUserNestedInput
+    course_resources?: CourseResourceUncheckedUpdateManyWithoutUserNestedInput
     user_chapter_progress?: UserChapterProgressUncheckedUpdateManyWithoutUserNestedInput
     user_quiz_attempts?: UserQuizAttemptUncheckedUpdateManyWithoutUserNestedInput
     user_responses?: UserResponseUncheckedUpdateManyWithoutUserNestedInput
@@ -20553,7 +21908,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCoursesNestedInput
     chapters?: ChapterUpdateManyWithoutCourseNestedInput
-    course_pdfs?: CoursePdfUpdateManyWithoutCourseNestedInput
+    course_resources?: CourseResourceUpdateManyWithoutCourseNestedInput
   }
 
   export type CourseUncheckedUpdateWithoutUser_course_progressInput = {
@@ -20565,7 +21920,7 @@ export namespace Prisma {
     completed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     chapters?: ChapterUncheckedUpdateManyWithoutCourseNestedInput
-    course_pdfs?: CoursePdfUncheckedUpdateManyWithoutCourseNestedInput
+    course_resources?: CourseResourceUncheckedUpdateManyWithoutCourseNestedInput
   }
 
   export type UserCreateWithoutUser_chapter_progressInput = {
@@ -20577,7 +21932,7 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted?: boolean
     courses?: CourseCreateNestedManyWithoutUserInput
-    course_pdfs?: CoursePdfCreateNestedManyWithoutUserInput
+    course_resources?: CourseResourceCreateNestedManyWithoutUserInput
     user_course_progress?: UserCourseProgressCreateNestedManyWithoutUserInput
     user_quiz_attempts?: UserQuizAttemptCreateNestedManyWithoutUserInput
     user_responses?: UserResponseCreateNestedManyWithoutUserInput
@@ -20592,7 +21947,7 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted?: boolean
     courses?: CourseUncheckedCreateNestedManyWithoutUserInput
-    course_pdfs?: CoursePdfUncheckedCreateNestedManyWithoutUserInput
+    course_resources?: CourseResourceUncheckedCreateNestedManyWithoutUserInput
     user_course_progress?: UserCourseProgressUncheckedCreateNestedManyWithoutUserInput
     user_quiz_attempts?: UserQuizAttemptUncheckedCreateNestedManyWithoutUserInput
     user_responses?: UserResponseUncheckedCreateNestedManyWithoutUserInput
@@ -20650,7 +22005,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
     courses?: CourseUpdateManyWithoutUserNestedInput
-    course_pdfs?: CoursePdfUpdateManyWithoutUserNestedInput
+    course_resources?: CourseResourceUpdateManyWithoutUserNestedInput
     user_course_progress?: UserCourseProgressUpdateManyWithoutUserNestedInput
     user_quiz_attempts?: UserQuizAttemptUpdateManyWithoutUserNestedInput
     user_responses?: UserResponseUpdateManyWithoutUserNestedInput
@@ -20665,7 +22020,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
     courses?: CourseUncheckedUpdateManyWithoutUserNestedInput
-    course_pdfs?: CoursePdfUncheckedUpdateManyWithoutUserNestedInput
+    course_resources?: CourseResourceUncheckedUpdateManyWithoutUserNestedInput
     user_course_progress?: UserCourseProgressUncheckedUpdateManyWithoutUserNestedInput
     user_quiz_attempts?: UserQuizAttemptUncheckedUpdateManyWithoutUserNestedInput
     user_responses?: UserResponseUncheckedUpdateManyWithoutUserNestedInput
@@ -20713,7 +22068,7 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted?: boolean
     courses?: CourseCreateNestedManyWithoutUserInput
-    course_pdfs?: CoursePdfCreateNestedManyWithoutUserInput
+    course_resources?: CourseResourceCreateNestedManyWithoutUserInput
     user_course_progress?: UserCourseProgressCreateNestedManyWithoutUserInput
     user_chapter_progress?: UserChapterProgressCreateNestedManyWithoutUserInput
     user_responses?: UserResponseCreateNestedManyWithoutUserInput
@@ -20728,7 +22083,7 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted?: boolean
     courses?: CourseUncheckedCreateNestedManyWithoutUserInput
-    course_pdfs?: CoursePdfUncheckedCreateNestedManyWithoutUserInput
+    course_resources?: CourseResourceUncheckedCreateNestedManyWithoutUserInput
     user_course_progress?: UserCourseProgressUncheckedCreateNestedManyWithoutUserInput
     user_chapter_progress?: UserChapterProgressUncheckedCreateNestedManyWithoutUserInput
     user_responses?: UserResponseUncheckedCreateNestedManyWithoutUserInput
@@ -20820,7 +22175,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
     courses?: CourseUpdateManyWithoutUserNestedInput
-    course_pdfs?: CoursePdfUpdateManyWithoutUserNestedInput
+    course_resources?: CourseResourceUpdateManyWithoutUserNestedInput
     user_course_progress?: UserCourseProgressUpdateManyWithoutUserNestedInput
     user_chapter_progress?: UserChapterProgressUpdateManyWithoutUserNestedInput
     user_responses?: UserResponseUpdateManyWithoutUserNestedInput
@@ -20835,7 +22190,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
     courses?: CourseUncheckedUpdateManyWithoutUserNestedInput
-    course_pdfs?: CoursePdfUncheckedUpdateManyWithoutUserNestedInput
+    course_resources?: CourseResourceUncheckedUpdateManyWithoutUserNestedInput
     user_course_progress?: UserCourseProgressUncheckedUpdateManyWithoutUserNestedInput
     user_chapter_progress?: UserChapterProgressUncheckedUpdateManyWithoutUserNestedInput
     user_responses?: UserResponseUncheckedUpdateManyWithoutUserNestedInput
@@ -20897,7 +22252,7 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted?: boolean
     courses?: CourseCreateNestedManyWithoutUserInput
-    course_pdfs?: CoursePdfCreateNestedManyWithoutUserInput
+    course_resources?: CourseResourceCreateNestedManyWithoutUserInput
     user_course_progress?: UserCourseProgressCreateNestedManyWithoutUserInput
     user_chapter_progress?: UserChapterProgressCreateNestedManyWithoutUserInput
     user_quiz_attempts?: UserQuizAttemptCreateNestedManyWithoutUserInput
@@ -20912,7 +22267,7 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted?: boolean
     courses?: CourseUncheckedCreateNestedManyWithoutUserInput
-    course_pdfs?: CoursePdfUncheckedCreateNestedManyWithoutUserInput
+    course_resources?: CourseResourceUncheckedCreateNestedManyWithoutUserInput
     user_course_progress?: UserCourseProgressUncheckedCreateNestedManyWithoutUserInput
     user_chapter_progress?: UserChapterProgressUncheckedCreateNestedManyWithoutUserInput
     user_quiz_attempts?: UserQuizAttemptUncheckedCreateNestedManyWithoutUserInput
@@ -21024,7 +22379,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
     courses?: CourseUpdateManyWithoutUserNestedInput
-    course_pdfs?: CoursePdfUpdateManyWithoutUserNestedInput
+    course_resources?: CourseResourceUpdateManyWithoutUserNestedInput
     user_course_progress?: UserCourseProgressUpdateManyWithoutUserNestedInput
     user_chapter_progress?: UserChapterProgressUpdateManyWithoutUserNestedInput
     user_quiz_attempts?: UserQuizAttemptUpdateManyWithoutUserNestedInput
@@ -21039,7 +22394,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
     courses?: CourseUncheckedUpdateManyWithoutUserNestedInput
-    course_pdfs?: CoursePdfUncheckedUpdateManyWithoutUserNestedInput
+    course_resources?: CourseResourceUncheckedUpdateManyWithoutUserNestedInput
     user_course_progress?: UserCourseProgressUncheckedUpdateManyWithoutUserNestedInput
     user_chapter_progress?: UserChapterProgressUncheckedUpdateManyWithoutUserNestedInput
     user_quiz_attempts?: UserQuizAttemptUncheckedUpdateManyWithoutUserNestedInput
@@ -21144,7 +22499,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CourseCreateWithoutCourse_pdfsInput = {
+  export type CourseCreateWithoutCourse_resourcesInput = {
     id?: bigint | number
     title: string
     youtube_url: string
@@ -21156,7 +22511,7 @@ export namespace Prisma {
     user_course_progress?: UserCourseProgressCreateNestedManyWithoutCourseInput
   }
 
-  export type CourseUncheckedCreateWithoutCourse_pdfsInput = {
+  export type CourseUncheckedCreateWithoutCourse_resourcesInput = {
     id?: bigint | number
     user_id: bigint | number
     title: string
@@ -21168,12 +22523,12 @@ export namespace Prisma {
     user_course_progress?: UserCourseProgressUncheckedCreateNestedManyWithoutCourseInput
   }
 
-  export type CourseCreateOrConnectWithoutCourse_pdfsInput = {
+  export type CourseCreateOrConnectWithoutCourse_resourcesInput = {
     where: CourseWhereUniqueInput
-    create: XOR<CourseCreateWithoutCourse_pdfsInput, CourseUncheckedCreateWithoutCourse_pdfsInput>
+    create: XOR<CourseCreateWithoutCourse_resourcesInput, CourseUncheckedCreateWithoutCourse_resourcesInput>
   }
 
-  export type UserCreateWithoutCourse_pdfsInput = {
+  export type UserCreateWithoutCourse_resourcesInput = {
     id?: bigint | number
     fullname: string
     email: string
@@ -21188,7 +22543,7 @@ export namespace Prisma {
     user_responses?: UserResponseCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutCourse_pdfsInput = {
+  export type UserUncheckedCreateWithoutCourse_resourcesInput = {
     id?: bigint | number
     fullname: string
     email: string
@@ -21203,23 +22558,42 @@ export namespace Prisma {
     user_responses?: UserResponseUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutCourse_pdfsInput = {
+  export type UserCreateOrConnectWithoutCourse_resourcesInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutCourse_pdfsInput, UserUncheckedCreateWithoutCourse_pdfsInput>
+    create: XOR<UserCreateWithoutCourse_resourcesInput, UserUncheckedCreateWithoutCourse_resourcesInput>
   }
 
-  export type CourseUpsertWithoutCourse_pdfsInput = {
-    update: XOR<CourseUpdateWithoutCourse_pdfsInput, CourseUncheckedUpdateWithoutCourse_pdfsInput>
-    create: XOR<CourseCreateWithoutCourse_pdfsInput, CourseUncheckedCreateWithoutCourse_pdfsInput>
+  export type ResourceTypeCreateWithoutCourse_resourcesInput = {
+    id?: bigint | number
+    extension: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type ResourceTypeUncheckedCreateWithoutCourse_resourcesInput = {
+    id?: bigint | number
+    extension: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type ResourceTypeCreateOrConnectWithoutCourse_resourcesInput = {
+    where: ResourceTypeWhereUniqueInput
+    create: XOR<ResourceTypeCreateWithoutCourse_resourcesInput, ResourceTypeUncheckedCreateWithoutCourse_resourcesInput>
+  }
+
+  export type CourseUpsertWithoutCourse_resourcesInput = {
+    update: XOR<CourseUpdateWithoutCourse_resourcesInput, CourseUncheckedUpdateWithoutCourse_resourcesInput>
+    create: XOR<CourseCreateWithoutCourse_resourcesInput, CourseUncheckedCreateWithoutCourse_resourcesInput>
     where?: CourseWhereInput
   }
 
-  export type CourseUpdateToOneWithWhereWithoutCourse_pdfsInput = {
+  export type CourseUpdateToOneWithWhereWithoutCourse_resourcesInput = {
     where?: CourseWhereInput
-    data: XOR<CourseUpdateWithoutCourse_pdfsInput, CourseUncheckedUpdateWithoutCourse_pdfsInput>
+    data: XOR<CourseUpdateWithoutCourse_resourcesInput, CourseUncheckedUpdateWithoutCourse_resourcesInput>
   }
 
-  export type CourseUpdateWithoutCourse_pdfsInput = {
+  export type CourseUpdateWithoutCourse_resourcesInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     title?: StringFieldUpdateOperationsInput | string
     youtube_url?: StringFieldUpdateOperationsInput | string
@@ -21231,7 +22605,7 @@ export namespace Prisma {
     user_course_progress?: UserCourseProgressUpdateManyWithoutCourseNestedInput
   }
 
-  export type CourseUncheckedUpdateWithoutCourse_pdfsInput = {
+  export type CourseUncheckedUpdateWithoutCourse_resourcesInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     user_id?: BigIntFieldUpdateOperationsInput | bigint | number
     title?: StringFieldUpdateOperationsInput | string
@@ -21243,18 +22617,18 @@ export namespace Prisma {
     user_course_progress?: UserCourseProgressUncheckedUpdateManyWithoutCourseNestedInput
   }
 
-  export type UserUpsertWithoutCourse_pdfsInput = {
-    update: XOR<UserUpdateWithoutCourse_pdfsInput, UserUncheckedUpdateWithoutCourse_pdfsInput>
-    create: XOR<UserCreateWithoutCourse_pdfsInput, UserUncheckedCreateWithoutCourse_pdfsInput>
+  export type UserUpsertWithoutCourse_resourcesInput = {
+    update: XOR<UserUpdateWithoutCourse_resourcesInput, UserUncheckedUpdateWithoutCourse_resourcesInput>
+    create: XOR<UserCreateWithoutCourse_resourcesInput, UserUncheckedCreateWithoutCourse_resourcesInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutCourse_pdfsInput = {
+  export type UserUpdateToOneWithWhereWithoutCourse_resourcesInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutCourse_pdfsInput, UserUncheckedUpdateWithoutCourse_pdfsInput>
+    data: XOR<UserUpdateWithoutCourse_resourcesInput, UserUncheckedUpdateWithoutCourse_resourcesInput>
   }
 
-  export type UserUpdateWithoutCourse_pdfsInput = {
+  export type UserUpdateWithoutCourse_resourcesInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     fullname?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -21269,7 +22643,7 @@ export namespace Prisma {
     user_responses?: UserResponseUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutCourse_pdfsInput = {
+  export type UserUncheckedUpdateWithoutCourse_resourcesInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     fullname?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -21284,6 +22658,75 @@ export namespace Prisma {
     user_responses?: UserResponseUncheckedUpdateManyWithoutUserNestedInput
   }
 
+  export type ResourceTypeUpsertWithoutCourse_resourcesInput = {
+    update: XOR<ResourceTypeUpdateWithoutCourse_resourcesInput, ResourceTypeUncheckedUpdateWithoutCourse_resourcesInput>
+    create: XOR<ResourceTypeCreateWithoutCourse_resourcesInput, ResourceTypeUncheckedCreateWithoutCourse_resourcesInput>
+    where?: ResourceTypeWhereInput
+  }
+
+  export type ResourceTypeUpdateToOneWithWhereWithoutCourse_resourcesInput = {
+    where?: ResourceTypeWhereInput
+    data: XOR<ResourceTypeUpdateWithoutCourse_resourcesInput, ResourceTypeUncheckedUpdateWithoutCourse_resourcesInput>
+  }
+
+  export type ResourceTypeUpdateWithoutCourse_resourcesInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    extension?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ResourceTypeUncheckedUpdateWithoutCourse_resourcesInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    extension?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CourseResourceCreateWithoutResource_typeInput = {
+    id?: bigint | number
+    resource_url: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    course: CourseCreateNestedOneWithoutCourse_resourcesInput
+    user: UserCreateNestedOneWithoutCourse_resourcesInput
+  }
+
+  export type CourseResourceUncheckedCreateWithoutResource_typeInput = {
+    id?: bigint | number
+    course_id: bigint | number
+    user_id: bigint | number
+    resource_url: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type CourseResourceCreateOrConnectWithoutResource_typeInput = {
+    where: CourseResourceWhereUniqueInput
+    create: XOR<CourseResourceCreateWithoutResource_typeInput, CourseResourceUncheckedCreateWithoutResource_typeInput>
+  }
+
+  export type CourseResourceCreateManyResource_typeInputEnvelope = {
+    data: CourseResourceCreateManyResource_typeInput | CourseResourceCreateManyResource_typeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CourseResourceUpsertWithWhereUniqueWithoutResource_typeInput = {
+    where: CourseResourceWhereUniqueInput
+    update: XOR<CourseResourceUpdateWithoutResource_typeInput, CourseResourceUncheckedUpdateWithoutResource_typeInput>
+    create: XOR<CourseResourceCreateWithoutResource_typeInput, CourseResourceUncheckedCreateWithoutResource_typeInput>
+  }
+
+  export type CourseResourceUpdateWithWhereUniqueWithoutResource_typeInput = {
+    where: CourseResourceWhereUniqueInput
+    data: XOR<CourseResourceUpdateWithoutResource_typeInput, CourseResourceUncheckedUpdateWithoutResource_typeInput>
+  }
+
+  export type CourseResourceUpdateManyWithWhereWithoutResource_typeInput = {
+    where: CourseResourceScalarWhereInput
+    data: XOR<CourseResourceUpdateManyMutationInput, CourseResourceUncheckedUpdateManyWithoutResource_typeInput>
+  }
+
   export type CourseCreateManyUserInput = {
     id?: bigint | number
     title: string
@@ -21293,10 +22736,11 @@ export namespace Prisma {
     updated_at?: Date | string
   }
 
-  export type CoursePdfCreateManyUserInput = {
+  export type CourseResourceCreateManyUserInput = {
     id?: bigint | number
+    resource_type_id: bigint | number
     course_id: bigint | number
-    pdf_url: string
+    resource_url: string
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -21352,7 +22796,7 @@ export namespace Prisma {
     completed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     chapters?: ChapterUpdateManyWithoutCourseNestedInput
-    course_pdfs?: CoursePdfUpdateManyWithoutCourseNestedInput
+    course_resources?: CourseResourceUpdateManyWithoutCourseNestedInput
     user_course_progress?: UserCourseProgressUpdateManyWithoutCourseNestedInput
   }
 
@@ -21364,7 +22808,7 @@ export namespace Prisma {
     completed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     chapters?: ChapterUncheckedUpdateManyWithoutCourseNestedInput
-    course_pdfs?: CoursePdfUncheckedUpdateManyWithoutCourseNestedInput
+    course_resources?: CourseResourceUncheckedUpdateManyWithoutCourseNestedInput
     user_course_progress?: UserCourseProgressUncheckedUpdateManyWithoutCourseNestedInput
   }
 
@@ -21377,26 +22821,29 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CoursePdfUpdateWithoutUserInput = {
+  export type CourseResourceUpdateWithoutUserInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    pdf_url?: StringFieldUpdateOperationsInput | string
+    resource_url?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    course?: CourseUpdateOneRequiredWithoutCourse_pdfsNestedInput
+    course?: CourseUpdateOneRequiredWithoutCourse_resourcesNestedInput
+    resource_type?: ResourceTypeUpdateOneRequiredWithoutCourse_resourcesNestedInput
   }
 
-  export type CoursePdfUncheckedUpdateWithoutUserInput = {
+  export type CourseResourceUncheckedUpdateWithoutUserInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
+    resource_type_id?: BigIntFieldUpdateOperationsInput | bigint | number
     course_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    pdf_url?: StringFieldUpdateOperationsInput | string
+    resource_url?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CoursePdfUncheckedUpdateManyWithoutUserInput = {
+  export type CourseResourceUncheckedUpdateManyWithoutUserInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
+    resource_type_id?: BigIntFieldUpdateOperationsInput | bigint | number
     course_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    pdf_url?: StringFieldUpdateOperationsInput | string
+    resource_url?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -21541,10 +22988,11 @@ export namespace Prisma {
     updated_at?: Date | string
   }
 
-  export type CoursePdfCreateManyCourseInput = {
+  export type CourseResourceCreateManyCourseInput = {
     id?: bigint | number
+    resource_type_id: bigint | number
     user_id: bigint | number
-    pdf_url: string
+    resource_url: string
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -21591,26 +23039,29 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CoursePdfUpdateWithoutCourseInput = {
+  export type CourseResourceUpdateWithoutCourseInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    pdf_url?: StringFieldUpdateOperationsInput | string
+    resource_url?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutCourse_pdfsNestedInput
+    user?: UserUpdateOneRequiredWithoutCourse_resourcesNestedInput
+    resource_type?: ResourceTypeUpdateOneRequiredWithoutCourse_resourcesNestedInput
   }
 
-  export type CoursePdfUncheckedUpdateWithoutCourseInput = {
+  export type CourseResourceUncheckedUpdateWithoutCourseInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
+    resource_type_id?: BigIntFieldUpdateOperationsInput | bigint | number
     user_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    pdf_url?: StringFieldUpdateOperationsInput | string
+    resource_url?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CoursePdfUncheckedUpdateManyWithoutCourseInput = {
+  export type CourseResourceUncheckedUpdateManyWithoutCourseInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
+    resource_type_id?: BigIntFieldUpdateOperationsInput | bigint | number
     user_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    pdf_url?: StringFieldUpdateOperationsInput | string
+    resource_url?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -22030,6 +23481,42 @@ export namespace Prisma {
     is_correct?: BoolFieldUpdateOperationsInput | boolean
     points_awarded?: BigIntFieldUpdateOperationsInput | bigint | number
     graded_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CourseResourceCreateManyResource_typeInput = {
+    id?: bigint | number
+    course_id: bigint | number
+    user_id: bigint | number
+    resource_url: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type CourseResourceUpdateWithoutResource_typeInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    resource_url?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    course?: CourseUpdateOneRequiredWithoutCourse_resourcesNestedInput
+    user?: UserUpdateOneRequiredWithoutCourse_resourcesNestedInput
+  }
+
+  export type CourseResourceUncheckedUpdateWithoutResource_typeInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    course_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    resource_url?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CourseResourceUncheckedUpdateManyWithoutResource_typeInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    course_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    resource_url?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
