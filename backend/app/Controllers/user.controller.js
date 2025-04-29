@@ -7,11 +7,13 @@ import { errorResponse, successResponse } from "../Traits/response.traits.js";
 const prisma = new PrismaClient();
 
 class UserController {
+  //this can be moved to traits
   static hashPassword = async (password) => {
     const hash = await bcrypt.hash(password, 10);
     return hash;
   };
 
+  //this can also be moved to traits
   verifyPassword = (password, hash) => {
     return bcrypt.compare(password, hash);
   };
@@ -48,7 +50,7 @@ class UserController {
 
       const userData = {
         ...user,
-        id: user.id.toString(),
+        id: user.id.toString(), //Casting to String because JS cannot read bigInt.
       };
 
       return successResponse(
