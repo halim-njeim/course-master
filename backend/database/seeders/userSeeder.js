@@ -30,7 +30,7 @@ export const seedUsers = async (count = 10) => {
     console.log(`Successfully seeded ${createdUsers.length} users`);
     return createdUsers;
   } catch (error) {
-    console.error("Error seeding: ", error);
+    console.error("Error seeding users: ", error);
     throw error;
   }
 };
