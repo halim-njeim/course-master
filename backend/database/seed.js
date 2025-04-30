@@ -4,6 +4,9 @@ import { seedResourceTypes } from "./seeders/resourceTypeSeeder.js";
 import { seedCourses } from "./seeders/courseSeeder.js";
 import { seedChapters } from "./seeders/chapterSeeder.js";
 import { seedQuizzes } from "./seeders/quizSeeder.js";
+import { seedQuestions } from "./seeders/questionSeeder.js";
+import { seedOptions } from "./seeders/optionSeeder.js";
+import { seedWrittenAnswers } from "./seeders/writtenAnswerSeeder.js";
 
 const prisma = new PrismaClient();
 
@@ -16,6 +19,9 @@ const main = async () => {
     const courses = await seedCourses(users);
     const chapters = await seedChapters(courses);
     const quizzes = await seedQuizzes(chapters);
+    const questions = await seedQuestions(quizzes);
+    const options = await seedOptions(questions);
+    const writtenAnswers = await seedWrittenAnswers(questions);
 
     console.log("Database seeded successfully");
   } catch (error) {
