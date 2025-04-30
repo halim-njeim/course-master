@@ -9,8 +9,6 @@ class UserFactory {
       fullname: overrides.fullname || faker.person.fullName(),
       email: overrides.email || faker.internet.email().toLowerCase(),
       password: hashPassword ? await bcrypt.hash(password, 10) : password,
-      created_at: overrides.created_at || faker.date.past(),
-      updated_at: overrides.updated_at || new Date(),
       deleted: overrides.deleted !== undefined ? overrides.deleted : false,
       ...overrides,
     };

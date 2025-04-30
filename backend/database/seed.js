@@ -1,9 +1,8 @@
 import { PrismaClient } from "../app/generated/prisma/client.js";
-import { seedUsers, truncateUsers } from "./seeders/userSeeder.js";
-import {
-  seedResourceTypes,
-  truncateResourceTypes,
-} from "./seeders/resourceTypeSeeder.js";
+import { seedUsers } from "./seeders/userSeeder.js";
+import { seedResourceTypes } from "./seeders/resourceTypeSeeder.js";
+import { seedCourses } from "./seeders/courseSeeder.js";
+import { seedChapters } from "./seeders/chapterSeeder.js";
 
 const prisma = new PrismaClient();
 
@@ -13,6 +12,8 @@ const main = async () => {
   try {
     const users = await seedUsers(10);
     const resourceTypes = await seedResourceTypes();
+    const courses = await seedCourses(users);
+    const chapters = await seedChapters(courses);
 
     console.log("Database seeded successfully");
   } catch (error) {
