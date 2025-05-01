@@ -6,7 +6,7 @@ import { errorResponse, successResponse } from "../Traits/response.traits.js";
 
 const prisma = new PrismaClient();
 
-class UserController {
+class AuthController {
   //this can be moved to traits
   static hashPassword = async (password) => {
     const hash = await bcrypt.hash(password, 10);
@@ -30,6 +30,7 @@ class UserController {
         return errorResponse(res, "Email is already taken", 400);
       }
 
+      //will be modified.
       const hashedPassword = await this.hashPassword(password);
 
       const user = await User.create({
@@ -67,6 +68,46 @@ class UserController {
       return errorResponse(res, "Failed to register user", 500);
     }
   };
+
+  static login = async (req, res) => {
+    try {
+      const { email, password } = req.body;
+
+      const user = await User.findFirst({ where: { email, deleted: false } });
+
+      if (!user) {
+        return errorResponse(res, "Invalid credentials", 401);
+      }
+
+      const passwordValid = await this.verifyPassword(password, user.password);
+
+      if (!passwordValid) {
+        return errorResponse(res, "Invalid credentials", 401);
+      }
+
+      const token = jwt.sign(
+        { id: user.id.toString(), email: user.email },
+        process.env.JWT_SECRET,
+        {
+          expiresIn: "7d",
+        }
+      );
+
+      const userData = {
+        ...user,
+        id: user.id.toString(), // Casting to String because JS cannot read bigInt
+      };
+
+      return successResponse(res, {
+        message: "Login successful",
+        userData,
+        token,
+      });
+    } catch (error) {
+      console.error("Login error:", error);
+      return errorResponse(res, "Failed to login", 500);
+    }
+  };
 }
 
-export default UserController;
+export default AuthController;
