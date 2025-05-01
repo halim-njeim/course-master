@@ -1,29 +1,41 @@
 import { validationResult } from "express-validator";
-import { errorResponse } from "../../Traits/response.traits";
+import {
+  errorResponse,
+  requestErrorResponse,
+} from "../../Traits/response.traits.js";
 
 class FormRequest {
-  static rules = () => {
+  static rules() {
     return [];
-  };
+  }
 
-  static messages = () => {
+  static messages() {
     return {};
-  };
+  }
 
-  static validate = (req, res, next) => {
-    const validationChain = this.rules();
-
-    return Promise.all(
-      validationChain.map((validation) => validation.run(req))
-    ).then(() => {
+  static validate(req, res, next) {
+    try {
       const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
-        return errorResponse(res, "Validation failed", 422, errors.array());
+        const formattedErrors = errors.array().map((error) => ({
+          field: error.param,
+          message: error.msg,
+        }));
+
+        return requestErrorResponse(res, "Validation Error", formattedErrors);
       }
+
       next();
-    });
-  };
+    } catch (error) {
+      console.error("Validation error:", error);
+      return errorResponse(res, error, 500);
+    }
+  }
+
+  static middleware() {
+    return [...this.rules(), this.validate];
+  }
 }
 
 export default FormRequest;

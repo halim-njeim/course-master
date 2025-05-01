@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
-import { errorResponse } from "../Traits/response.traits";
-import User from "../Models/User";
+import { errorResponse } from "../Traits/response.traits.js";
+import User from "../Models/User.js";
 
 const authMiddleware = async (req, res, next) => {
   try {

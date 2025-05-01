@@ -27,3 +27,15 @@ export const notFoundResponse = (res, message = "Resource not found") => {
     message,
   });
 };
+
+export const requestErrorResponse = (
+  res,
+  message = "Validation failed",
+  errors = { Validation: "error" }
+) => {
+  return res.status(422).json({
+    status: "error",
+    message,
+    errors,
+  });
+};

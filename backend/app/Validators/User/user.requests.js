@@ -1,5 +1,5 @@
 import { body, param } from "express-validator";
-import FormRequest from "../Requests/FormRequest";
+import FormRequest from "../Requests/FormRequest.js";
 
 export class UpdateUserRequest extends FormRequest {
   static rules = () => {
